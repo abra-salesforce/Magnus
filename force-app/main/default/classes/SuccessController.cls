@@ -126,7 +126,7 @@ public without sharing class SuccessController {
             HttpRequest req1 = new HttpRequest();
             req1.setendpoint('https://secure5.tranzila.com/cgi-bin/tranzila71u.cgi');
             req1.setmethod('POST');
-            string pos = 'supplier=magnusintetok&sum=' + price + '&expdate=' + exp + '&currency='+(cur=='USD'?'2':'1')+'&TranzilaPW=zJkelm&TranzilaTK=' + tok + '&cred_type=1&tranmode=A&SF_Transaction_Id=' + tcc.id + '&contact=' + accadd.name + '&email=' + accadd.PersonEmail + '&phone=' + accadd.PersonMobilePhone + '&IMaam=0.17&json_purchase_data=' + products;
+            string pos = 'supplier=magnusintetok&sum=' + price + '&expdate=' + exp + '&currency='+(cur=='USD'?'2':'1')+'&TranzilaPW=zJkelm&TranzilaTK=' + tok + '&cred_type=1&tranmode=A&SF_Transaction_Id=' + tcc.id + '&contact=' + accadd.name + '&email=' + accadd.PersonEmail + '&phone=' + accadd.PersonMobilePhone + '&IMaam=0.18&json_purchase_data=' + products;
             req1.setbody(pos);
             HttpResponse res1;
             String str = '';
