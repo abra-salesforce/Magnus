@@ -1,0 +1,158 @@
+<apex:page title="MAGNUS" sidebar="false" showheader="false" language="he" action="{!up}" standardStylesheets="false">
+<link href="https://fonts.googleapis.com/css?family=Assistant" rel="stylesheet"/>
+
+<style>
+
+    body {
+        background-color: white;
+    }
+
+    .page-main-cont {
+        background-color: white;
+        padding-top: 1rem;
+        font-size: 13px;
+        line-height: 150%;
+        width: 700px;
+        margin: auto;
+        overflow: auto;
+        font-family: 'Assistant', sans-serif;
+        direction: rtl;
+        font-weight: 300;
+    }
+
+    .page-header {
+        font-size: 2em;
+        font-weight: 700;
+        text-align: center;
+        border-bottom: 2px solid #004029;
+        color: #004029;
+        padding-bottom: 0.7rem;
+    }
+
+    .page-header-bullets {
+        font-size: 1em;
+        font-weight: normal;
+    }
+
+     /* For bold bullets */
+    .page-header-bullets-bold {
+        font-weight: bold;
+    }
+
+    .error-msg {
+        color: #d46161;
+        font-size: 1.1em;
+        text-align: center;
+        padding: 0.2rem 0;
+    }
+
+
+    .page-content-wrap {
+        background-color: #eee;
+        text-align: right;
+        color: #004029;
+    }
+
+    /* Table for text only - no borders */
+    .trans-table {
+        margin: auto;
+    }
+
+    .trans-table-line {
+        font-size: 11pt;
+        font-weight: normal;
+    }
+
+    /* Table with data - with borders */
+    .data-table {
+        margin: 1rem auto;
+        background-color: white;
+        border: 1px solid #ddd;
+        border-collapse: collapse;
+    }
+
+    .data-table-text {
+        font-size: 1em;
+    }
+
+    .data-table tr,
+    .data-table td {
+        border: 1px solid #ddd;
+        padding: 0.4rem 0.5rem;
+        font-weight: normal;
+    }
+
+    .data-table h1 {
+        font-size: 1em;
+        margin: 0;
+    }
+
+    /* If top line if different */
+    .data-table-first-line {
+        color: #004029;
+        font-weight: bold;
+    }
+
+    /* Mid-page header */
+    .page-small-header {
+        font-size: 1.2em;
+        color: #004029;
+        margin: 1rem 0 0;
+    }
+
+    /* Help number for bottom of page */
+    .magnus-help-number {
+        padding: 1rem 0;
+        font-size: 1em;
+        font-weight: normal;
+        color: #004029;
+        background-color: #f3f3f3;
+    }
+
+
+    /* for apex:selectList */
+    .input-select {
+        max-width: 100%;
+        border-style: none;
+        background-color: white;
+        height: 2rem;
+        font-size: 1em;
+        min-width: 16.6rem;
+    }
+
+    /* for apex:inputField */
+    .input-one-text-field {
+        background: white;
+        border-style: none;
+        padding: 2px 8px 2px 2px;
+        height: 1.8rem;
+        min-width: 16rem;
+    }
+
+    /* for apex:commandButton */
+    .command-button {
+        background-color: #005d3e;
+        color: white;
+        padding: 0.5rem;
+        margin: 0.2rem;
+    }
+
+    .command-button:hover {
+        background-color: #007a54;
+    }
+
+</style>
+  <div class="page-main-cont">
+          <apex:image url="{!URLFOR($Resource.magnuspic)}" width="700"/>
+  <h3 class="page-header"></h3>
+  <div class="page-content-wrap">
+        <h3 class="page-header-bullet">
+                    שלום, <br/>
+נראה כי כבר התחלת למלא בעבר טופס הזמנה בעבור מכשיר לוויני של MAGNUS.<br/>בכדי להמשיך את תהליך ההזמנה, פרטייך יועברו לנציגי השירות שיחזרו אלייך בהקדם להמשך סגירת ההזמנה.<br/>
+מוזמנים גם לפנות אלינו בשעות הפעילות בימים א'-ה', בין השעות 09:00-18:00.<br/>
+תודה, MAGNUS<br/></h3>
+<h3>טלפונית - 03-8006808</h3>
+<h3> במייל - info@magnus.co.il</h3>
+        </div>
+    </div>
+</apex:page>

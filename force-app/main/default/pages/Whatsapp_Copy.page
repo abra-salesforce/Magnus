@@ -1,0 +1,40 @@
+<apex:page standardController="Incident_Report__c" showHeader="false" sidebar="false" language="EN"> 
+<apex:form >
+      <h1>Request Type: </h1>
+      <apex:outputField value="{!Incident_Report__c.Type_Desk_Rescue__c}" label="Type_Desk_Rescue__c"/>  <br/>
+      <h1>Event Created: </h1>
+      <apex:outputField value="{!Incident_Report__c.Event_Open_Date__c}" label="Event_Open_Date__c"/>  <br/>
+      <h1>Country: </h1> 
+      <apex:outputField value="{!Incident_Report__c.Countries__c}" label="Countries__c"/> <br/>
+      <h1>Name Of Applicant: </h1>
+      <apex:outputField value="{!Incident_Report__c.Account_Addressing__c}" label="Account_Addressing__c"/>  <br/>
+      <h1>Phone Number Of Person Reporting: </h1>
+      <apex:outputField value="{!Incident_Report__c.Telephone__c}" label="Telephone__c"/> <br/>
+      <h1>Type Of Relationship: </h1>
+      <apex:outputField value="{!Incident_Report__c.Insured_Relationship__c}" label="Insured_Relationship__c"/><br/>
+      <h1>Name Of Applicant: </h1> 
+      <apex:outputField value="{!Incident_Report__c.Rescued_Name__c}" label="Rescued_Name__c"/><br/>
+      <h1>Member's Phone Number: </h1> 
+      <apex:outputField value="{!Incident_Report__c.Rescued_Phone__c}" label="Rescued_Phone__c"/><br/>
+      <h1>Age: </h1> 
+      <apex:outputField value="{!Incident_Report__c.Age__c}" label="Age__c"/><br/>
+      <h1>Gender: </h1> 
+      <apex:outputField value="{!Incident_Report__c.Gender__c}" label="Gender__c"/><br/>
+      <h1>ID Number: </h1>
+      <apex:outputField value="{!Incident_Report__c.IDNumber__c}" label="IDNumber__c"/> <br/>
+      <h1>Insurance Company: </h1>
+      <apex:outputField value="{!Incident_Report__c.Insurance_Company_picklist__c}" label="Insurance_Company_picklist__c"/> <br/>
+      <h1>Insurance Policy: </h1>
+      <apex:outputField value="{!Incident_Report__c.Insurance_Policy__c}" label="Insurance_Policy__c"/> <br/>
+      <h1>Contact Method: </h1> 
+      <apex:outputField value="{!Incident_Report__c.Contact_Method__c}" label="Contact_Method__c"/><br/>
+      <h1>Incident Location: </h1> 
+      <apex:outputField value="{!Incident_Report__c.Rescued_Location__c}" label="Rescued_Location__c"/><br/>
+      <h1>Height: </h1> 
+      <apex:outputField value="{!Incident_Report__c.Height__c}" label="Height__c"/><br/>
+      <h1>Assistance Requested: </h1>
+      <apex:outputField value="{!Incident_Report__c.Rescued_Condition__c}" label="Rescued_Condition__c"/> <br/>
+      <h1>Actions To Be Taken: </h1> 
+      <apex:outputField value="{!Incident_Report__c.Rescued_Situation__c}" label="Rescued_Situation__c"/><br/>
+</apex:form>
+</apex:page>

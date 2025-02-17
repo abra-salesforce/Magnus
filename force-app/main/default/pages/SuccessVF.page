@@ -1,0 +1,286 @@
+<apex:page title="MAGNUS" standardController="Transaction_Card__c" extensions="SuccessController" sidebar="false" showheader="false"
+    language="he" action="{!up}" standardStylesheets="false" cache="false">
+    <link href="https://fonts.googleapis.com/css?family=Assistant" rel="stylesheet" />
+
+    <style>
+        body {
+            background-color: white;
+        }
+
+        .page-main-cont {
+            background-color: white;
+            padding-top: 1rem;
+            font-size: 13px;
+            line-height: 150%;
+            width: 700px;
+            margin: auto;
+            overflow: auto;
+            font-family: 'Assistant', sans-serif;
+            direction: rtl;
+            font-weight: 300;
+        }
+
+        .page-header {
+            font-size: 2em;
+            font-weight: 700;
+            text-align: center;
+            border-bottom: 2px solid #004029;
+            color: #004029;
+            padding-bottom: 0.7rem;
+        }
+
+        .page-header-bullets {
+            font-size: 1em;
+            font-weight: normal;
+        }
+
+        /* For bold bullets */
+
+        .page-header-bullets-bold {
+            font-weight: bold;
+        }
+
+        .error-msg {
+            color: #d46161;
+            font-size: 1.1em;
+            text-align: center;
+            padding: 0.2rem 0;
+        }
+
+
+        .page-content-wrap {
+            background-color: #eee;
+            text-align: {!IF(Nepal=true,'left','right')};
+            color: #004029;
+        }
+
+        /* Table for text only - no borders */
+
+        .trans-table {
+            margin: auto;
+        }
+
+        .trans-table-line {
+            font-size: 11pt;
+            font-weight: normal;
+        }
+
+        /* Table with data - with borders */
+
+        .data-table {
+            margin: 1rem auto;
+            background-color: white;
+            border: 1px solid #ddd;
+            border-collapse: collapse;
+        }
+
+        .data-table-text {
+            font-size: 1em;
+        }
+
+        .data-table tr,
+        .data-table td {
+            border: 1px solid #ddd;
+            padding: 0.4rem 0.5rem;
+            font-weight: normal;
+        }
+
+        .data-table h1 {
+            font-size: 1em;
+            margin: 0;
+        }
+
+        /* If top line if different */
+
+        .data-table-first-line {
+            color: #004029;
+            font-weight: bold;
+        }
+
+        /* Mid-page header */
+
+        .page-small-header {
+            font-size: 1.2em;
+            color: #004029;
+            margin: 1rem 0 0;
+        }
+
+        /* Help number for bottom of page */
+
+        .magnus-help-number {
+            padding: 1rem 0;
+            font-size: 1em;
+            font-weight: normal;
+            color: #004029;
+            background-color: #f3f3f3;
+        }
+
+
+        /* for apex:selectList */
+
+        .input-select {
+            max-width: 100%;
+            border-style: none;
+            background-color: white;
+            height: 2rem;
+            font-size: 1em;
+            min-width: 16.6rem;
+        }
+
+        /* for apex:inputField */
+
+        .input-one-text-field {
+            background: white;
+            border-style: none;
+            padding: 2px 8px 2px 2px;
+            height: 1.8rem;
+            min-width: 16rem;
+        }
+
+        /* for apex:commandButton */
+
+        .command-button {
+            background-color: #005d3e;
+            color: white;
+            padding: 0.5rem;
+            margin: 0.2rem;
+        }
+
+        .command-button:hover {
+            background-color: #007a54;
+        }
+    .loader {
+            border: 4px solid white;
+            border-top: 10px solid black;
+            border-radius: 50%;
+            width: 100px;
+            height: 100px;
+            margin-top:500px;
+            animation: spin 2s linear infinite;
+            display:none;
+        }
+        .overlay {
+            display:none;
+            opacity:0.8;
+            background-color:#ccc;
+            position:fixed;
+            width:100%;
+            height:100%;
+            top:0px;
+            left:0px;
+            z-index:1000;
+        }
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+    </style>
+    <script>
+        function load() {
+            document.getElementById('load').style.display = 'block';
+            document.getElementById('overlay').style.display = 'block';
+        }
+    </script>
+    <div class="page-main-cont">
+        <apex:image url="{!URLFOR($Resource.magnuspic)}" width="700" />
+        <h3 class="page-header"></h3>
+        <div class="page-content-wrap">
+            <apex:outputPanel rendered="{!(!Nepal)}">
+            <h3 class="page-header-bullet">תודה רבה על הזמנתך,
+                <br/> התשלום בוצע בהצלחה וחשבונית תשלח למייל .
+                <br/>
+            </h3>
+            <apex:outputPanel id="items">
+                <div id="overlay" align="center" class="overlay"><div id="load" class="loader"/></div>
+                <apex:outputPanel rendered="{!FirstPayment}">
+                    <apex:form >
+                        <h1 class="page-small-header" style="text-align:center;">
+                            האם ברצונך להוסיף מוצרים נלווים
+                            <br/>
+                        </h1>
+                        <table class="data-table data-table-first-line">
+                            <tr>
+                                <td>
+                                    <h1 class="data-table-text">
+                                        תמונה:
+                                    </h1>
+                                </td>
+                                <td>
+                                    <h1 class="data-table-text">
+                                        שם מוצר:
+                                    </h1>
+                                </td>
+                                <td>
+                                    <h1 class="data-table-text">
+                                        תאור מוצר:
+                                    </h1>
+                                </td>
+                                <td>
+                                    <h1 class="data-table-text">
+                                        מחיר יחידה:
+                                    </h1>
+                                </td>
+                                <td width="2%">
+                                    <h1 class="data-table-text">
+                                        כמות:
+                                    </h1>
+                                </td>
+                                <td>
+                                    <h1 class="data-table-text">
+                                        מחיר:
+                                    </h1>
+                                </td>
+                            </tr>
+                            <apex:repeat var="pl" value="{!ptls}">
+                                <tr>
+                                    <td>
+                                        <apex:image url="{!URLFOR($Resource[SUBSTITUTE(pl.prod.Name,' ','')])}" width="150" />
+                                    </td>
+                                    <td>
+                                        <apex:outputText value="{!pl.prod.WebName__c}" />
+                                    </td>
+                                    <td>
+                                        <apex:outputField value="{!pl.prod.WebDescription__c}" />
+                                    </td>
+                                    <td>
+                                        <apex:outputText value="{!pl.pt.Price__c} שח" />
+                                    </td>
+                                    <td>
+                                        <apex:inputfield value="{!pl.pt.Quantity__c}" style="width:50%">
+                                            <apex:actionSupport action="{!upPrice}" event="onchange" reRender="items" />
+                                        </apex:inputfield>
+                                    </td>
+                                    <td>
+                                        <apex:outputText value="{!(pl.pt.Quantity__c*pl.pt.Price__c)} שח" />
+                                    </td>
+                                </tr>
+                            </apex:repeat>
+                        </table>
+                        <h1 class="page-small-header" style="text-align:center;">
+                            מחיר תוספות:
+                            <br/> {!Price}
+                        </h1>
+                        <div align="center">
+                            <apex:commandButton styleclass="command-button" value="סיום הזמנה" onclick="window.location.href='/apex/successvf';" reRender="items"
+                            />
+                            <apex:commandButton styleclass="command-button" value="תשלום תוספות מיידי" action="{!addItems}" onclick="load();" reRender="items" />
+                        </div>
+                    </apex:form>
+                </apex:outputPanel>
+            </apex:outputPanel>
+            <h3>
+                במידה ויש שאלות נוספות ניתן לפנות אלינו: </h3>
+            <h3>טלפונית - 03-8006808</h3>
+            <h3> במייל - info@magnus.co.il</h3>
+        </apex:outputPanel>
+        <apex:outputPanel rendered="{!Nepal}">
+            <h3 class="page-header-bullet">Thank you for your order
+                    <br/> Payment Successful
+                    <br/>
+                    <br/>
+                    Your Device IMEI is {!imeidevice}
+            </h3>
+        </apex:outputPanel>
+        </div>
+    </div>
+</apex:page>

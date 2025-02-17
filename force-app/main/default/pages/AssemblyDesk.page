@@ -1,0 +1,2 @@
+<apex:page StandardController="Incident_Report__c" extensions="AssemblyDeskController" cache="false" sidebar="false" showheader="false" language="he" action="{!Redirect}" standardStylesheets="false">
+</apex:page>

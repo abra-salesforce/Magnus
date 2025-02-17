@@ -1,0 +1,273 @@
+<apex:page title="Affiliates" Controller="AffiliateReportController" showHeader="false" sidebar="false" standardStylesheets="false" docType="html-5.0">
+    <head>
+        <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+        <link href="https://fonts.googleapis.com/css?family=Assistant" rel="stylesheet"/>
+
+        <style>
+
+            body {
+                background-color: white;
+            }
+
+            .page-main-cont {
+                background-color: white;
+                padding-top: 1rem;
+                font-size: 13px;
+                line-height: 150%;
+                width: 700px;
+                margin: auto;
+                overflow: auto;
+                font-family: 'Assistant', sans-serif;
+                direction: rtl;
+                font-weight: 300;
+            }
+
+            .page-header {
+                font-size: 2em;
+                font-weight: 700;
+                text-align: center;
+                border-bottom: 2px solid #004029;
+                color: #004029;
+                padding-bottom: 0.7rem;
+            }
+
+            .page-header-bullets {
+                font-size: 1em;
+                font-weight: normal;
+            }
+
+            /* For bold bullets */
+            .page-header-bullets-bold {
+                font-weight: bold;
+            }
+
+            .error-msg {
+                color: #d46161;
+                font-size: 1.1em;
+                text-align: center;
+                padding: 0.2rem 0;
+            }
+
+
+            .page-content-wrap {
+                background-color: #eee;
+                text-align: right;
+                color: #004029;
+            }
+
+            /* Table for text only - no borders */
+            .trans-table {
+                margin: auto;
+            }
+
+            .trans-table-line {
+                font-size: 11pt;
+                font-weight: normal;
+            }
+
+            /* Table with data - with borders */
+            .data-table {
+                margin: 1rem auto;
+                background-color: white;
+                border: 1px solid #ddd;
+                border-collapse: collapse;
+            }
+
+            .data-table-text {
+                font-size: 1em;
+            }
+
+            .data-table tr,
+            .data-table td {
+                border: 1px solid #ddd;
+                padding: 0.4rem 0.5rem;
+                font-weight: normal;
+            }
+
+            .data-table h1 {
+                font-size: 1em;
+                margin: 0;
+            }
+
+            /* If top line if different */
+            .data-table-first-line {
+                color: #004029;
+                font-weight: bold;
+            }
+
+            /* Mid-page header */
+            .page-small-header {
+                font-size: 1.2em;
+                color: #004029;
+                margin: 1rem 0 0;
+            }
+
+            /* Help number for bottom of page */
+            .magnus-help-number {
+                padding: 1rem 0;
+                font-size: 1em;
+                font-weight: normal;
+                color: #004029;
+                background-color: #f3f3f3;
+            }
+
+
+            /* for apex:selectList */
+            .input-select {
+                max-width: 100%;
+                border-style: none;
+                background-color: white;
+                height: 2rem;
+                font-size: 1em;
+                min-width: 16.6rem;
+            }
+
+            /* for apex:inputField */
+            .input-one-text-field {
+                background: white;
+                border-style: none;
+                padding: 2px 8px 2px 2px;
+                height: 1.8rem;
+                min-width: 16rem;
+            }
+
+            /* for apex:commandButton */
+            .command-button {
+                background-color: #005d3e;
+                color: white;
+                padding: 0.5rem;
+                margin: 0rem;
+            }
+
+            .command-button:hover {
+                background-color: #007a54;
+            }
+
+        </style>
+        <script>
+            window.onload=function init(){
+                var user=localStorage.getItem("username");
+                var pass=localStorage.getItem("password");
+                if(user!=null&&pass!=null){
+                    document.getElementsByClassName("username")[0].value=user;
+                    document.getElementsByClassName("password")[0].value=pass;
+                    login();
+                }
+            }
+            function saveLocal(){
+                localStorage.setItem("username",document.getElementsByClassName("username")[0].value);
+                localStorage.setItem("password",document.getElementsByClassName("password")[0].value);
+            }
+            function logoff(){
+                localStorage.removeItem("username");
+                localStorage.removeItem("password");
+                window.location.href=location.href;
+            }
+        </script>
+    </head>
+
+    <body>
+            <apex:outputPanel id="all">
+                <div class="page-main-cont">
+                    <div align="center">
+                        <apex:image url="{!URLFOR($Resource.MagnusLogo)}" width="300"/>
+                        <apex:outputPanel id="logoaff" rendered="{!logoid!=null}">
+                            <img src="data:image/jpg;base64,{!logoid}" width="300" alt=""/>
+                        </apex:outputPanel>
+                    </div>
+                <h3 class="page-header">שותפים</h3>
+                <div class="page-content-wrap">
+                <apex:form >
+                <apex:outputPanel id="none"></apex:outputPanel>
+                    <apex:outputPanel id="login" rendered="{!(log==0)}">
+                    <apex:actionFunction name="login" action="{!Login}" reRender="all"/>
+                        <div align="center">
+                            <span style="color:red;{!if(errorlog,'','display:none;')}">שם משתמש או סיסמא שגויים</span>
+                            <br/>
+                            <table>
+                                <tr>
+                                <td>שם משתמש: </td><td><apex:input styleClass="username" value="{!Username}"/></td>
+                                </tr>
+                                <tr>
+                                <td>ססמא: </td><td><apex:inputSecret styleClass="password" value="{!Password}"/></td>
+                                </tr>
+                            </table>
+                            <apex:commandButton styleClass="command-button" value="התחבר" onclick="saveLocal();login();" reRender="none"/>
+                        </div>
+                    </apex:outputPanel>
+                    <apex:outputPanel id="terms" rendered="{!(log==1)}">
+                        <apex:actionFunction name="terms" action="{!Terms}" reRender="all"/>
+                        <apex:commandButton onclick="logoff();" styleClass="command-button" value="התנתק" reRender="none"/>
+                        <div align="center">
+                            <apex:iframe src="{!URLFOR($Resource.Terms)}"/>
+                            אני מאשר את תנאי השירות
+                            <apex:inputCheckbox value="{!terms}"/>
+                            <apex:commandButton styleClass="command-button" value="שמור" onclick="terms();" reRender="none"/>
+                        </div>
+                    </apex:outputPanel>
+                    <apex:outputPanel id="setting" rendered="{!(log==2)}">
+                        <apex:commandButton onclick="logoff();" styleClass="command-button" value="התנתק" reRender="none"/>
+                        <div align="center">
+                            <apex:commandButton styleClass="command-button" value="כל הזמן" action="{!RefreshChart}" reRender="all">
+                                <apex:param name="alltime" value="A" assignTo="{!Duration}"/>
+                            </apex:commandButton>
+                            <apex:commandButton styleClass="command-button" value="השנה" action="{!RefreshChart}" reRender="all">
+                                <apex:param name="year" value="Y" assignTo="{!Duration}"/>
+                            </apex:commandButton>
+                            <apex:commandButton styleClass="command-button" value="החודש" action="{!RefreshChart}" reRender="all">
+                                <apex:param name="month" value="M" assignTo="{!Duration}"/>
+                            </apex:commandButton>
+                            <apex:commandButton styleClass="command-button" value="השבוע" action="{!RefreshChart}" reRender="all">
+                                <apex:param name="week" value="W" assignTo="{!Duration}"/>
+                            </apex:commandButton>
+                        </div>
+                    </apex:outputPanel>
+                    </apex:form>
+                </div>
+                </div>
+                <div align="center">
+                <apex:outputPanel id="Charts" rendered="{!(log==2)}">
+                    <script type="text/javascript">
+                        google.charts.load('current', {
+                            'packages': ['corechart']
+                        });
+                        google.charts.setOnLoadCallback(drawChart);
+                        var ApexData=JSON.parse('{!JSONstring}');
+                        function drawChart() {
+                            var googledatatest = [
+                                ['תאריך', 'מספר עסקאות', { role: 'style' }, { role: 'annotation' }]
+                            ];
+                            var ticksY = [0];
+                            for (var i = 0; i < ApexData.length; i++){
+                                googledatatest.push([ApexData[i].Duration, ApexData[i].SumTransaction , 'color: #004029', ApexData[i].SumTransaction]);
+                                ticksY.push(ApexData[i].SumTransaction);
+                            }
+                            ticksY.sort(function(a, b){return a-b});
+                            var data = google.visualization.arrayToDataTable(googledatatest);
+
+                            var options = {
+                                title: '{!affname}',
+                                titleTextStyle: {
+                                    fontSize: 18
+                                },
+                                vAxis: {
+                                    ticks: ticksY
+                                },
+                                curveType: 'function',
+                                legend: {
+                                    position: 'none'
+                                }
+                            }
+
+                            var chart = new google.visualization.ColumnChart(document.getElementById('curve_chart'));
+
+                            chart.draw(data, options);
+                        }
+                    </script>
+                    <div id="curve_chart" style="width: 700px; height: 400px;{!if(errordata,'display:none;','')}"></div>
+                    <span style="color:red;{!if(errordata,'','display:none;')}">אין מידע</span>
+                </apex:outputPanel>
+                </div>
+            </apex:outputPanel>
+    </body>
+</apex:page>

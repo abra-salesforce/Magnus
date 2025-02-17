@@ -1,0 +1,6 @@
+<apex:page showHeader="true" sidebar="true">
+    <script>
+        window.open('/apex/pricecalc?admin=2');
+        window.history.back();
+    </script>
+</apex:page>

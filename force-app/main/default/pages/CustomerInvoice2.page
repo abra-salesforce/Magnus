@@ -1,0 +1,205 @@
+<apex:page renderAs="pdf" standardController="Transaction_Card__c" extensions="CustomerInvoiceControllerAccept" showHeader="false" sidebar="false" applyBodyTag="false" cache="false">
+<head>
+<style type="text/css">
+    body {font-family: "Arial Unicode MS"; }
+</style>
+</head>
+<body>
+<div align="center">
+    <apex:form >
+    <table width="100%" border="0" cellspacing="0" cellpadding="0">
+                    <tr>
+                        <td align="left">
+                            <img width="250" height="120" src="{!URLFOR($Resource.MagnusLogo)}"/>
+                        </td>
+                        <td align="right">
+                            <p align="right">
+מ"עב ץוליחו רותיא סונגמ
+<br/>
+http://www.magnus.co.il
+<br/>
+03-8006808
+ : ןופלט
+<br/>
+03-7515-529
+ : סקפ
+<br/>
+contact@magnus.co.il ל"אוד
+<br/>
+513783787
+ פ.ח : קסוע רפסמ
+</p>
+</td>
+</tr>
+</table>
+    <table width="100%"  border="0" cellspacing="0" cellpadding="0">
+                    <tr>
+                        <td align="left" >
+                                <p align="left" >
+                                        <apex:outputText value="{0, date, dd/MM/yyyy}">
+                                            <apex:param value="{!TODAY()}"/>
+                                        </apex:outputText>
+                                        :ךיראת
+                                </p>
+                        </td>
+                            <td align="right" >
+                                    <p align="right" >
+                                             <strong>{!dear2}</strong>
+<br/>                        <strong>{!Transaction_card__c.Account_Passenger__r.Passenger_Id__c}</strong> : ז.ת
+<br/>                       <strong>{!Transaction_card__c.Account_Passenger__r.Phone}</strong> :דיינ ןופלט
+                                    </p>
+                            </td>
+
+                    </tr>
+    </table>
+    <h3>
+{!Transaction_card__c.Name}
+ רישכמ תלבק רושיא
+    </h3>
+    <table width="100%" border="1" cellspacing="0" cellpadding="0">
+                    <tr>
+                            <td>
+                                    <p align="right" >
+                                        תומכ
+                                    </p>
+                            </td>
+                            <td>
+                                    <p align="right" >
+רצומ רואת
+                                    </p>
+                            </td>
+                            <td>
+                                    <p align="right" >
+                                            רצומ ט"קמ
+                                    </p>
+                            </td>
+                            <td>
+                            </td>
+                    </tr>
+                    <tr>
+                            <td>
+                                    <p align="right" >
+                                                1 הדיחי
+                            </p>
+                            </td>
+                            <td>
+                                    <p align="right" >
+ ינייוול רישכמ תלאשה INREACH
+                                    </p>
+                            </td>
+                            <td>
+                                    <p align="right" >
+                                            {!Transaction_card__c.IMEI__c}
+                                    </p>
+                            </td>
+                            <td>
+                                    <p align="right" >
+                                            1
+                                    </p>
+                            </td>
+                    </tr>
+                    <tr>
+                            <td>
+                                    <p align="right" >
+        1 הדיחי
+</p>
+                            </td>
+                            <td>
+                                    <p align="right" >
+                                        {!IF(tcc.Card_Device__r.model__c== 'A','
+                                    (בייוח אל ­ הרזחהל) תוללוס
+                                    ','
+                                    (בייוח אל ­ הרזחהל) הנעטה לבכ  
+                                    ')}
+                                    </p>
+                            </td>
+                            <td>
+                                    <p align="right" >
+                                            345
+                                    </p>
+                            </td>
+                            <td>
+                                    <p align="right" >
+                                            2
+                                    </p>
+                            </td>
+                    </tr>
+    </table>
+        <table width="100%" border="0" cellspacing="0" cellpadding="0" style="margin-top:-10px;margin-bottom:-10px;">
+                        <tr>
+                                <td>
+    <p align="right" >
+    ואולמב רישכמה ריחמ בייוחי הבינג וא ןדבוא לש הרקמב
+    <br/>
+       <a href="http://magnus.force.com/termofuse">
+תורישה יאנתל</a>
+ םיכסמ ינא
+ <img width="20" height="20" src="{!URLFOR($Resource.Checked)}"/>
+    </p>
+</td></tr></table>
+    <table width="100%" border="1" cellspacing="0" cellpadding="0">
+            <tbody>
+                    <tr>
+                            <td>
+                                    <p align="right" >
+                                        חוקלה רושיא
+                                    </p>
+                            </td>
+                            <td>
+                            </td>
+                    </tr>
+                    <tr>
+                            <td>
+                                {!uptcc.Device_recipient__c}
+                            </td>
+                            <td>
+                                    <p align="right">
+                                :   לבקמה םש
+                                    </p>
+                            </td>
+                    </tr>
+                    <tr>
+                            <td>
+                                <apex:outputText value="{0, date, dd/MM/yyyy}">
+                                    <apex:param value="{!TODAY()}"/>
+                                </apex:outputText>
+                            </td>
+                            <td>
+                                    <p align="right">
+                                    :   ךיראת
+                                    </p>
+                            </td>
+                    </tr>
+                    <tr>
+                            <td>
+                                <apex:image width="100%" value="{!signaturepic}"></apex:image>
+                            </td>
+                            <td>
+                                    <p align="right">
+                                    :   המיתח
+                                    </p>
+                            </td>
+                    </tr>
+            </tbody>
+    </table>
+    <apex:commandButton action="{!Back}" value="Back to Resign" id="theButton2"/>
+        <apex:commandButton action="{!GeneratePDF}" value="Accept Signature" id="theButton1"/>
+        <table width="100%" border="0" cellspacing="0" cellpadding="0">
+                <tbody>
+                        <tr>
+                                <td align="right">
+                                    <p align="right" >
+                                ,הכרבב
+    <br/>
+                                        {!$User.FirstName} {!$User.LastName}
+    <br/>
+                                         מ"עב ץוליחו רותיא סונגמ
+                                    </p>
+                                </td>
+    </tr>
+    </tbody>
+    </table>
+    </apex:form>
+    </div>
+</body>
+    </apex:page>

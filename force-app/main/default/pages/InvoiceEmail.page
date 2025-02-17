@@ -1,0 +1,11 @@
+<apex:page standardController="Transaction_Card__c" extensions="InvoiceEmailController" showHeader="false" standardStylesheets="false">
+    <div align="center" style="padding-top:20px;">
+        <apex:form >
+                        <h1>
+                        Customer Email
+                        </h1>
+            <apex:inputText style="width:500px;" value="{!tex}"/><br/>
+                        <apex:commandButton value="Send" action="{!SendEmail}"/>
+        </apex:form>
+    </div>
+</apex:page>

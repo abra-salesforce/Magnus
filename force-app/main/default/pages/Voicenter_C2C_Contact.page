@@ -1,0 +1,17 @@
+<apex:page standardController="Contact">
+    <a id="VoicenterPhone" style="white-space: nowrap;cursor:pointer; background: #49ca6d; color: #fff; padding: 6px 12px; display: inline-block !important; border-radius: 15px; text-decoration: none;" onclick='VoicenterSFCall("{!Contact.Phone}","{!$User.voicenter_extension__c}","{!$User.VoicenterUserCode__c}","{!$User.Id}","{!Contact.Id}", "{!$User.VoicenterOrgCode__c}");return false;' herf="">Call</a> 
+    <a id="VoicenterPhone2"  style="white-space: nowrap;cursor:pointer; background: #3AD1AB; color: #fff; padding: 6px 12px; display: inline-block !important; border-radius: 15px; text-decoration: none;" onclick='VoicenterSFCall("{!Contact.OtherPhone}","{!$User.voicenter_extension__c}","{!$User.VoicenterUserCode__c}","{!$User.Id}","{!Contact.Id}", "{!$User.VoicenterOrgCode__c}");return false;' herf="">Call Other</a> 
+    <a id="VoicenterMobile"  style="white-space: nowrap;cursor:pointer; background: #32C0DB; color: #fff; padding: 6px 12px; display: inline-block !important; border-radius: 15px; text-decoration: none;" onclick='VoicenterSFCall("{!Contact.MobilePhone}","{!$User.voicenter_extension__c}","{!$User.VoicenterUserCode__c}","{!$User.Id}","{!Contact.Id}", "{!$User.VoicenterOrgCode__c}");return false;' herf="">Call Mobile</a> 
+    <a id="VoicenterHome"  style="white-space: nowrap;cursor:pointer; background: #32C0DB; color: #fff; padding: 6px 12px; display: inline-block !important; border-radius: 15px; text-decoration: none;" onclick='VoicenterSFCall("{!Contact.HomePhone}","{!$User.voicenter_extension__c}","{!$User.VoicenterUserCode__c}","{!$User.Id}","{!Contact.Id}", "{!$User.VoicenterOrgCode__c}");return false;' herf="">Call Home Phone</a> 
+
+    <script src="https://apiv1.voicenter.co.il/Scripts/voicenterSFc2c.js" type="text/javascript"></script>
+    
+    <script language="JavaScript">
+        ShowHidePhoneBtn("VoicenterPhone","{!Contact.Phone}");
+        ShowHidePhoneBtn("VoicenterPhone2","{!Contact.OtherPhone}");
+        ShowHidePhoneBtn("VoicenterMobile","{!Contact.MobilePhone}");
+        ShowHidePhoneBtn("VoicenterHome","{!Contact.HomePhone}");
+    
+
+        </script>
+</apex:page>

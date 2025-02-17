@@ -1,0 +1,99 @@
+<apex:page controller="ChargeOrRefundController" sidebar="false" showheader="false" language="he" cache="false">
+    <style>
+        body {
+            background-color: #71a828;
+        }
+        .loader {
+            border: 4px solid white;
+            border-top: 10px solid black;
+            border-radius: 50%;
+            width: 100px;
+            height: 100px;
+            margin-top:500px;
+            animation: spin 2s linear infinite;
+            display:none;
+        }
+        .overlay {
+            display:none;
+            opacity:0.8;
+            background-color:#ccc;
+            position:fixed;
+            width:100%;
+            height:100%;
+            top:0px;
+            left:0px;
+            z-index:1000;
+        }
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+    </style>
+    <script>
+        function load() {
+            document.getElementById('load').style.display = 'block';
+            document.getElementById('overlay').style.display = 'block';
+        }
+    </script>
+    <div align="center" style="padding-top: 20px; display: block;" draggable="false">
+        <div
+            style="background-color: white;padding-top: 30px;font-family: Lucida Grande, Lucida Sans Unicode, sans-serif;font-size: 13px;line-height: 150%;background-color: #ffffff;
+    color: #254029;
+    border-color: #393939;
+    border-style: solid;
+    border-width: 9px;color: #454545; max-width: 770px;margin: auto;overflow: auto;">
+            <apex:image url="{!URLFOR($Resource.MagnusLogo)}"/>
+            <div style="padding: 10px 15px;">
+                <h3 style="text-align:right;border: 2px solid transparent;padding: 2px 6px; font-weight: bold; margin: 1em 0;font-family: Lucida Grande, Lucida Sans Unicode, sans-serif;font-size: 18px;    display: block;    line-height: 150%;">{!type}</h3>
+                <div style="min-width: 0;border-width: 2px;border-style: solid;padding: 0 8px 15px 8px;margin-left: 6px;margin-right: 6px;">
+                    <apex:outputText style="color:red" value="החיוב על סטטוס סגור" rendered="{!IF(clo =false,true,false)}"/>
+                    <apex:form rendered="{!clo}">
+                    <apex:outputPanel id="errors">
+                    <div id="overlay" align="center" class="overlay"><div id="load" class="loader"/></div>
+                    <apex:outputText style="color:red" value="אנא הזן מספר הקטן או שווה לכל סכום העסקה" rendered="{!err}"/>
+                    <script type="text/javascript">
+                    var ret = '{!TokGo}';
+                        function Golink() {
+                            if(ret==='False')
+                            {
+                                document.getElementById('submitzilla').click();
+                            }
+                        }
+                    </script>
+                </apex:outputPanel>
+                    <apex:selectRadio value="{!TokGo}" >
+                    <apex:actionSupport event="onchange" rerender="errors" />
+            <apex:selectOptions value="{!items}"/>
+            </apex:selectRadio>
+            <apex:selectRadio value="{!half}" rendered="{!met}">
+            <apex:actionSupport event="onchange" rerender="tex" />
+            <apex:selectOptions value="{!prices}"/>
+            </apex:selectRadio>
+            <apex:outputPanel id="tex">
+            <apex:outputText value="סכום חלקי:" rendered="{!IF(half ='True',true,false)}"/>
+            <apex:inputText value="{!Pricepart}" rendered="{!IF(half ='True',true,false)}"/>
+            </apex:outputPanel>
+            <br/>
+            <apex:commandButton value="{!type}" action="{!Submit}" onclick="load();" oncomplete="Golink();" reRender="errors,posting"/>
+                    </apex:form>
+                    <apex:outputpanel id="posting">
+                        <form ACTION="https://direct.tranzila.com/magnusinte/" method="POST">
+                            <input type="hidden" name="sum" value="{!ROUND(ptc.Grand_Total__c,2)}"/>
+                            <input type="hidden" name="contact" value="{!accadd.Name}"/>
+                            <input type="hidden" name="email" value="{!accadd.PersonEmail}"/>
+                            <input type="hidden" name="phone" value="{!accadd.PersonMobilePhone}"/>
+                            <input type="hidden" name="SF_Transaction_Id" value="{!sfid}"/>
+                            <input type="hidden" name="tranmode" value="AK"/>
+                            <input type="hidden" name="cred_type" value="8"/>
+                            <input type="hidden" name="maxpay" value="10"/>
+                            <input type="hidden" name="currency" value="{!IF(ptc.CurrencyIsoCode='USD','2','1')}"/>
+                            <input type="hidden" name="IMaam" value="0.17"/>
+                            <input type="hidden" name="json_purchase_data" value="{!products}"/>
+                            <input id="submitzilla" type="submit" value=" Send " style="display: none;"/>
+                        </form>
+                    </apex:outputpanel>
+                </div>
+            </div>
+        </div>
+    </div>
+</apex:page>

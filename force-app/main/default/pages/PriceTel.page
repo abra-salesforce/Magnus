@@ -1,0 +1,25 @@
+<apex:page standardController="Transaction_Card__c" extensions="PriceTelController" sidebar="false" showheader="false" language="he" action="{!checkmanual}">
+<Script>
+   window.onload = function check_certain_condition(){
+     var num='{!tcc.No_of_Payments__c}';
+     if(num==0)
+            document.getElementById('submitzilla').click();
+      else
+      window.location.href='/apex/error';
+}
+</Script>
+       <apex:outputpanel id="posting">
+       <form ACTION="https://direct.tranzila.com/magnusinte/" method="POST" >
+                    <input type="hidden" name="sum" value="{!tcc.CreditAmount__c}"/>
+                    <input type="hidden" name="contact" value="{!accadd.Name}"/>
+                    <input type="hidden" name="email" value="{!accadd.PersonEmail}"/>
+                    <input type="hidden" name="phone" value="{!accadd.PersonMobilePhone}"/>
+                    <input type="hidden" name="SF_Transaction_Id" value="{!tcc.id}"/>
+                       <input type="hidden" name="tranmode" value="AK"/>
+                       <input type="hidden" name="cred_type" value="8"/>
+                   <input type="hidden" name="IMaam" value="0"/>
+                       <input type="hidden" name="maxpay" value="{!batpR}"/>
+            <input id="submitzilla" type="submit" value=" Send " style="display: none;"/>
+       </form>
+       </apex:outputpanel>
+</apex:page>

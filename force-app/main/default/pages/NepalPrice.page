@@ -1,0 +1,222 @@
+<apex:page controller="NepalPriceController" showHeader="false" sidebar="false"  cache="false" docType="html-5.0" standardStylesheets="false">
+    <link href="https://fonts.googleapis.com/css?family=Assistant" rel="stylesheet" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no"/>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous"/>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
+    <style>
+        body {
+            background-color: white;
+        }
+
+        .page-main-cont {
+            background-color: white;
+            padding: 1rem;
+            font-size: 1rem;
+            line-height: 150%;
+            width:100%;
+            max-width: 700px;
+            margin: auto;
+            overflow: auto;
+            font-family: 'Assistant', sans-serif;
+            font-weight: 300;
+        }
+
+        .page-header {
+            font-size: 2rem;
+            font-weight: 700;
+            text-align: center;
+            border-bottom: 2px solid #004029;
+            color: #004029;
+            padding-bottom: 0.7rem;
+        }
+
+        .page-header-bullets {
+            font-size: 1rem;
+            font-weight: normal;
+        }
+
+        /* For bold bullets */
+
+        .page-header-bullets-bold {
+            font-weight: bold;
+        }
+
+        .error-msg {
+            color: #d46161;
+            font-size: 1.1rem;
+            text-align: center;
+            padding: 0.2rem 0;
+        }
+
+
+        .page-content-wrap {
+            padding: 1rem;
+            background-color: #eee;
+            text-align: center;
+            color: #004029;
+        }
+
+        /* Table for text only - no borders */
+
+        .trans-table {
+            margin: auto;
+        }
+
+        .trans-table-line {
+            font-size: 11pt;
+            font-weight: normal;
+        }
+
+        /* Table with data - with borders */
+
+        .data-table {
+            margin: 1rem auto;
+            background-color: white;
+            border: 1px solid #ddd;
+            border-collapse: collapse;
+        }
+
+        .data-table-text {
+            font-size: 1em;
+        }
+
+        .data-table tr,
+        .data-table td {
+            border: 1px solid #ddd;
+            padding: 0.4rem 0.5rem;
+            font-weight: normal;
+        }
+
+        .data-table h1 {
+            font-size: 1rem;
+            margin: 0;
+        }
+
+        /* If top line if different */
+
+        .data-table-first-line {
+            color: #004029;
+            font-weight: bold;
+        }
+
+        /* Mid-page header */
+
+        .page-small-header {
+            font-size: 1.2em;
+            color: #004029;
+            margin: 1rem 0 0;
+        }
+
+        /* Help number for bottom of page */
+
+        .magnus-help-number {
+            padding: 1rem 0;
+            font-size: 1rem;
+            font-weight: normal;
+            color: #004029;
+            background-color: #f3f3f3;
+        }
+
+
+        /* for apex:selectList */
+
+        .input-select {
+            max-width: 100%;
+            border-style: none;
+            background-color: white;
+            height: 2rem;
+            font-size: 1rem;
+            min-width: 16.6rem;
+        }
+
+        /* for apex:inputField */
+
+        .input-one-text-field {
+            background: white;
+            border-style: none;
+            padding: 2px 8px 2px 2px;
+            height: 1.8rem;
+            min-width: 16rem;
+        }
+
+        /* for apex:commandButton */
+
+        .command-button {
+            background-color: #005d3e;
+            color: white;
+            padding: 0.5rem;
+            margin: 0.2rem;
+        }
+
+        .command-button:hover {
+            background-color: #007a54;
+        }
+        .imgw{
+            width: 100%;
+            max-width:700px;
+        }
+    </style>
+     <body>
+        <div class="page-main-cont">
+            <apex:image url="{!URLFOR($Resource.magnuspic)}" styleClass="imgw"/>
+            <h3 class="page-header"></h3>
+            <div class="page-content-wrap">
+                <apex:outputPanel id="all">
+                    <div class="alert alert-danger" role="alert" style="{!if(error!=null,'','display:none;')}">{!error}</div>
+                    <apex:outputPanel rendered="{!retDev=true}">
+                        <br/>
+                        <apex:form >
+                            Days for Additional pay: <b>{!deltadays}</b>
+                            <br/>
+                            <br/>
+                            <b>Additional Price in USD</b>
+                            <br/>
+                            <apex:input type="number" styleClass="form-control" value="{!pay}"/>
+                            <br/>
+                            <apex:inputcheckbox value="{!badStat}"/>&nbsp;<b>Broken</b>
+                            <br/>
+                            <apex:commandButton action="{!Ret}" styleClass="btn btn-danger" value="Return" reRender="all"/>
+                        </apex:form>
+                    </apex:outputPanel>
+                    <br/>
+                    &nbsp;
+                    <apex:outputPanel rendered="{!and(deltadays>0,retDev=false)}">
+                        <br/>
+                        <apex:form >
+                            Days to pay: <b>{!deltadays}</b>
+                            <br/>
+                            <br/>
+                            <b>Enter IMEI</b>
+                            <br/>
+                            <apex:input type="text" styleClass="form-control" value="{!imei}" required="true"/>
+                            <br/>
+                            <b>Price in USD</b>
+                            <br/>
+                            <apex:input type="number" styleClass="form-control" value="{!pay}" required="true"/>
+                            <br/>
+                            <apex:commandButton action="{!Paid}" styleClass="btn btn-success" value="Paid" reRender="all"/>
+                        </apex:form>
+                        <br/>
+                        &nbsp;
+                    </apex:outputPanel>
+                    <apex:outputPanel rendered="{!and(main=true,retDev=false)}">
+                        <br/>
+                        <br/>
+                        <button class="btn btn-success" onclick="window.location.href='{!URL}';">New</button>
+                        <br/>
+                        <hr/>
+                        <br/>
+                        <apex:form >
+                            <b>Enter IMEI to Return</b>
+                            <br/>
+                            <apex:input type="text" styleClass="form-control" value="{!imei}" required="true"/>
+                            <br/>
+                            <apex:commandButton action="{!SearchRet}" styleClass="btn btn-danger" value="Return" reRender="all"/>
+                        </apex:form>
+                    </apex:outputPanel>
+                </apex:outputPanel>
+            </div>
+        </div>
+    </body>
+</apex:page>

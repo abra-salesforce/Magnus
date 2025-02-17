@@ -1,0 +1,7 @@
+<apex:page standardController="Incident_Report__c" sidebar="false" showheader="false">
+    <script>
+    window.onload=function start(){
+        window.location.href='/apex/itmyway-apps__DynamicRelated?id={!Incident_Report__c.id}&obj=Incident_Report__c-Timeline__c&theme='+(document.referrer.includes('lightning')?'true':'false');
+    }
+    </script>
+</apex:page>

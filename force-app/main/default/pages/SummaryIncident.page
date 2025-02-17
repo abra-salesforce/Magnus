@@ -1,0 +1,7 @@
+<apex:page standardController="Incident_Report__c" showHeader="false" sidebar="false">
+<apex:form >
+     <apex:inputField style="width:1100px;height:100px;" value="{!Incident_Report__c.Summary__c}"/> 
+     <br/>
+    <apex:commandButton value="שמור" action="{!Save}"/>
+</apex:form>
+</apex:page>

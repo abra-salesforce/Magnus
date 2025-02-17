@@ -1,0 +1,196 @@
+<apex:page standardController="Transaction_Card__c" extensions="CustomerInvoiceControllerAccept" showHeader="false" sidebar="false" applyBodyTag="false" cache="false">
+<head>
+<style type="text/css">
+    body {font-family: "Arial Unicode MS"; }
+</style>
+</head>
+<body>
+<div align="center">
+    <apex:form >
+    <table width="100%" border="0" cellspacing="0" cellpadding="0">
+                    <tr>
+                        <td align="left">
+                            <img width="250" height="120" src="{!URLFOR($Resource.MagnusLogo)}"/>
+                        </td>
+                        <td align="right">
+                            <p align="right">
+מגנוס איתור וחילוץ בע"מ
+<br/>
+http://www.magnus.co.il
+<br/>
+טלפון : 03-8006808
+<br/>
+פקס : 03-7515-529
+<br/>
+contact@magnus.co.il דוא"ל
+<br/>
+מספר עוסק : ח.פ 513783787
+</p>
+</td>
+</tr>
+</table>
+    <table width="100%"  border="0" cellspacing="0" cellpadding="0">
+                    <tr>
+                        <td align="left" >
+                                <p align="left" >
+                                        תאריך:
+                                        <apex:outputText value="{0, date, dd/MM/yyyy}">
+                                            <apex:param value="{!TODAY()}"/>
+                                        </apex:outputText>
+                                </p>
+                        </td>
+                            <td align="right" >
+                                    <p align="right" >
+                                            <strong>{!dear}</strong>
+<br/>
+ת.ז :                        <strong>{!Transaction_card__c.Account_Passenger__r.Passenger_Id__c}</strong>
+<br/>
+טלפון נייד:                        <strong>{!Transaction_card__c.Account_Passenger__r.Phone}</strong>
+                                    </p>
+                            </td>
+
+                    </tr>
+    </table>
+    <h1>
+        אישור קבלת מכשיר {!Transaction_card__c.Name}
+    </h1>
+    <table width="100%" border="1" cellspacing="0" cellpadding="0">
+                    <tr>
+                            <td>
+                                    <p align="right" >
+                                            כמות
+                                    </p>
+                            </td>
+                            <td>
+                                    <p align="right" >
+                                            תאור מוצר
+                                    </p>
+                            </td>
+                            <td>
+                                    <p align="right" >
+                                            מק"ט מוצר
+                                    </p>
+                            </td>
+                            <td>
+                            </td>
+                    </tr>
+                    <tr>
+                            <td>
+                                    <p align="right" >
+יחידה 1                                 </p>
+                            </td>
+                            <td>
+                                    <p align="right" >
+                                            השאלת מכשיר לווייני ­ INREACH
+                                    </p>
+                            </td>
+                            <td>
+                                    <p align="right" >
+                                            {!Transaction_card__c.IMEI__c}
+                                    </p>
+                            </td>
+                            <td>
+                                    <p align="right" >
+                                            1
+                                    </p>
+                            </td>
+                    </tr>
+                    <tr>
+                            <td>
+                                    <p align="right" >
+יחידה 1</p>
+                            </td>
+                            <td>
+                                    <p align="right" >
+                                        ({!IF(tcc.Card_Device__r.model__c== 'A','סוללות','כבל הטענה')}
+                                        (להחזרה ­- לא חוייב
+                                </p>
+                            </td>
+                            <td>
+                                    <p align="right" >
+                                            345
+                                    </p>
+                            </td>
+                            <td>
+                                    <p align="right" >
+                                            2
+                                    </p>
+                            </td>
+                    </tr>
+    </table>
+        <table width="100%" border="0" cellspacing="0" cellpadding="0">
+                        <tr>
+                                <td>
+    <p align="right" >
+    במקרה של אובדן או גניבה יחוייב מחיר המכשיר במלואו
+    <br/>
+    אני מסכים    <a href="/apex/TermOfUse">לתנאי השירות</a>
+    <apex:inputCheckBox value="{!tcc.Terms_conditions_accepted__c}"  disabled="true"/>
+    </p>
+</td></tr></table>
+    <table width="100%" border="1" cellspacing="0" cellpadding="0">
+            <tbody>
+                    <tr>
+                            <td>
+                                    <p align="right" >
+                                            אישור הלקוח
+                                    </p>
+                            </td>
+                            <td>
+                            </td>
+                    </tr>
+                    <tr>
+                            <td>
+                                {!Transaction_card__c.Device_recipient__c}
+                            </td>
+                            <td>
+                                    <p align="right">
+                                            : שם המקבל
+                                    </p>
+                            </td>
+                    </tr>
+                    <tr>
+                            <td>
+                                <apex:outputText value="{0, date, dd/MM/yyyy}">
+                                    <apex:param value="{!TODAY()}"/>
+                                </apex:outputText>
+                            </td>
+                            <td>
+                                    <p align="right">
+                                            : תאריך
+                                    </p>
+                            </td>
+                    </tr>
+                    <tr>
+                            <td>
+                                <apex:image width="100%" value="{!signaturepic}"></apex:image>
+                            </td>
+                            <td>
+                                    <p align="right">
+                                             : חתימה
+                                    </p>
+                            </td>
+                    </tr>
+            </tbody>
+    </table>
+    <apex:commandButton action="{!Back}" value="Back to Resign" id="theButton2"/>
+        <apex:commandButton action="{!GeneratePDF}" value="Accept Signature" id="theButton1"/>
+        <table width="100%" border="0" cellspacing="0" cellpadding="0">
+                <tbody>
+                        <tr>
+                                <td align="right">
+                                    <p align="right" >
+                                        ,בברכה
+    <br/>
+                                        {!$User.FirstName} {!$User.LastName}
+    <br/>
+                                         מגנוס איתור וחילוץ בע"מ
+                                    </p>
+                                </td>
+    </tr>
+    </tbody>
+    </table>
+    </apex:form>
+    </div>
+</body>
+    </apex:page>

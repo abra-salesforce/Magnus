@@ -1,0 +1,246 @@
+<apex:page standardController="Transaction_Card__c"  extensions="AssemblyController" cache="false" sidebar="false" showheader="false" language="he" action="{!CheckFirst}" standardStylesheets="false">
+<link href="https://fonts.googleapis.com/css?family=Assistant" rel="stylesheet"/>
+
+<style>
+
+    body {
+        background-color: white;
+    }
+
+    .page-main-cont {
+        background-color: white;
+        padding-top: 1rem;
+        font-size: 13px;
+        line-height: 150%;
+        width: 700px;
+        margin: auto;
+        overflow: auto;
+        font-family: 'Assistant', sans-serif;
+        direction: rtl;
+        font-weight: 300;
+    }
+
+    .page-header {
+        font-size: 2em;
+        font-weight: 700;
+        text-align: right;
+        border-bottom: 2px solid #004029;
+        color: #004029;
+        padding-bottom: 0.7rem;
+    }
+
+    .page-header-bullets {
+        font-size: 1em;
+        font-weight: normal;
+    }
+
+     /* For bold bullets */
+    .page-header-bullets-bold {
+        font-weight: bold;
+    }
+
+    .error-msg {
+        color: #d46161;
+        font-size: 1.1em;
+        text-align: center;
+        padding: 0.2rem 0;
+    }
+
+
+    .page-content-wrap {
+        background-color: white;
+        text-align: right;
+        color: #004029;
+    }
+
+    /* Table for text only - no borders */
+    .trans-table {
+        margin: auto;
+    }
+
+    .trans-table-line {
+        font-size: 11pt;
+        font-weight: normal;
+    }
+
+    /* Table with data - with borders */
+    .data-table {
+        margin: 1rem auto;
+        background-color: white;
+        border: 1px solid #ddd;
+        border-collapse: collapse;
+    }
+
+    .data-table-text {
+        font-size: 1em;
+    }
+
+    .data-table tr,
+    .data-table td {
+        border: 1px solid #ddd;
+        padding: 0.4rem 0.5rem;
+        font-weight: normal;
+    }
+
+    .data-table h1 {
+        font-size: 1em;
+        margin: 0;
+    }
+
+    /* If top line if different */
+    .data-table-first-line {
+        color: #004029;
+        font-weight: bold;
+    }
+
+    /* Mid-page header */
+    .page-mid-header {
+        font-size: 1.4em;
+        color: #004029;
+        margin: 1rem 0 0;
+    }
+    /* Mid-page header */
+    .page-small-header {
+        font-size: 1.2em;
+        color: black;
+        font-weight:normal;
+        margin: 1rem 0 0;
+    }
+    .page-small-header-b {
+        font-size: 1.2em;
+        color: black;
+        margin: 1rem 0 0;
+    }
+
+    /* Help number for bottom of page */
+    .magnus-help-number {
+        padding: 1rem 0;
+        font-size: 1em;
+        font-weight: normal;
+        color: #004029;
+        background-color: #f3f3f3;
+    }
+
+
+    /* for apex:selectList */
+    .input-select {
+        max-width: 100%;
+        border-style: none;
+        background-color: white;
+        height: 2rem;
+        font-size: 1em;
+        min-width: 16.6rem;
+    }
+
+    /* for apex:inputField */
+    .input-one-text-field {
+        background: white;
+        border-style: none;
+        padding: 2px 8px 2px 2px;
+        height: 1.8rem;
+        min-width: 16rem;
+    }
+
+    /* for apex:commandButton */
+    .command-button {
+        background-color: #005d3e;
+        color: white;
+        padding: 0.5rem;
+        margin: 50px;
+    }
+
+    .command-button:hover {
+        background-color: #007a54;
+    }
+
+</style>
+<div class="page-main-cont">
+        <apex:image url="{!URLFOR($Resource.magnuspic)}" width="700"/>
+    <h3 class="page-header">הזמנת שירות</h3>
+    <div class="page-content-wrap">
+        <u><h4 class="page-mid-header">מכשיר לוויני למטיילים</h4></u>
+        <h5 class="page-small-header">יוצאים לטייל בחו"ל? כדאי שתדעו- בעוד תקשורת סלולרית זמינה רק ב- 10% מהעולם, תקשורת לווינית מאפשרת 100% כיסוי עולמי מלא, ללא תלות ברשת סלולרית/ אינטרנט.</h5>
+        <br/>
+        <u><h4 class="page-mid-header">תעריפי שירות - השכרה יומית</h4></u>
+        <h5 class="page-small-header">החל מיום איסוף המכשיר ועד החזרתו ל- MAGNUS:<br/>
+*דמי ביטול (עד 24 שעות לפני מועד ההדרכה/ איסוף המכשיר)- 250 ש"ח/ מינימום ימי השכרה 30 יום.</h5>
+        <apex:form >
+        <apex:outputPanel id="block">
+        <table>
+            <tr>
+                <td>
+                </td>
+                <td style="text-align:center;">
+                    <apex:image url="{!URLFOR($Resource.Adev)}" width="220"/>
+                    <br/><h4 class="page-mid-header">
+                    מכשיר A
+                    </h4>
+                </td>
+                <td style="text-align:center;">
+                    <apex:image url="{!URLFOR($Resource.SEplusdev)}" width="350"/>
+                    <br/><h4 class="page-mid-header">
+                    מכשיר +SE
+                    </h4>
+                </td>
+            </tr>
+            <tr>
+                <td><h5 class="page-small-header-b">
+                    השכרה יומית - חצי שנה ראשונה
+                </h5></td>
+                <td style="text-align:center;">
+                    <h5 class="page-small-header-b">{!A[0].Price__c}$</h5>
+                </td>
+                <td style="text-align:center;">
+                    <h5 class="page-small-header-b">{!SEP[0].Price__c}$</h5>
+                </td>
+            </tr>
+            <tr>
+                <td><h5 class="page-small-header-b">
+                    השכרה יומית - לאחר חצי שנה ואילך
+                </h5></td>
+                <td style="text-align:center;">
+                    <h5 class="page-small-header-b">{!A[1].Price__c}$</h5>
+                </td>
+                <td style="text-align:center;">
+                    <h5 class="page-small-header-b">{!SEP[1].Price__c}$</h5>
+                </td>
+            </tr>
+            <tr>
+                <td></td>
+                <td style="text-align:center;">
+                    <apex:commandButton styleclass="command-button" value="להזמנה לחצו כאן" action="{!redirect}" rendered="{!A[0].Available__c}" rerender="block">
+                        <apex:param name="A" value="A" assignTo="{!Device}"/>
+                    </apex:commandButton>
+                    <apex:outputText value="A לא זמין במלאי"  rendered="{!(!A[0].Available__c)}"/>
+                </td>
+                <td style="text-align:center;">
+                    <apex:commandButton styleclass="command-button" value="להזמנה לחצו כאן" action="{!redirect}" rendered="{!SEP[0].Available__c}" rerender="block">
+                        <apex:param Name="SEplus" value="SE%2B" assignTo="{!Device}"/>
+                    </apex:commandButton>
+                    <apex:outputText value="+SE לא זמין במלאי"  rendered="{!(!SEP[0].Available__c)}"/>
+                </td>
+            </tr>
+        </table>
+        </apex:outputPanel>
+        </apex:form>
+        <u><h4 class="page-mid-header">המכשיר כולל:</h4></u>
+        <h5 class="page-small-header">&#8226; <b>לחצן מצוקה SOS</b> המחובר לחמ"ל MAGNUS בישראל, הפועל 24/7. <br/>
+&#8226; הודעות מובנות <b>"הכל בסדר"</b> הנשלחות בצירוף מיקום מדויק.<br/>
+&#8226; <b>התכתבות חופשית</b> בשגרה ובמצוקה.<br/>
+</h5>
+<br/>
+        <div align="center">
+            <apex:image url="{!URLFOR($Resource.tabdev)}" width="350"/>
+        </div>
+            <h5 class="page-small-header">
+            המכשירים כוללים חבילת תקשורת (Bytes 2000) בכל חודש. קיימת אפשרות להגדלת חבילת התקשורת בהתאם לצורכי הנסיעה.
+            <br/><br/>
+            <b>במקרה של חריגה חודשית מחבילת התקשורת יתבצע חיוב בסך 20$ לכל 1000 Bytes.</b>
+            <br/><br/>
+            לפירוט ה- Bytes פר פונקציה במכשיר <a href="http://www.magnus.co.il/Bytes" target="_blank">לחצו כאן</a>
+            <br/><br/><b>
+            * למטיילים בהודו ובורמה- חשוב לכבד ולשמור על חוקי התקשורת בהודו, על פי הם אין להפעיל טלפונים לוויניים. יחד עם זאת, בעת מצב חירום מסכן חיים ועל פי שיקול דעת, באחריות המטיילים לשלוח אות SOS מהמכשיר שבידם. 
+            </b></h5>
+    </div>
+    </div>
+</apex:page>

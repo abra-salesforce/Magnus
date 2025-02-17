@@ -1,0 +1,520 @@
+<apex:page title="MAGNUS הארכת שירות" standardController="Transaction_Card__c" extensions="PriceRetController" sidebar="false" showheader="false" language="he" action="{!RetCheck}" standardStylesheets="false" docType="html-5.0" cache="false">
+<link href="https://fonts.googleapis.com/css?family=Assistant" rel="stylesheet"/>
+<script>
+    function load() {
+        document.getElementById('load').style.display = 'block';
+        document.getElementById('overlay').style.display = 'block';
+    }
+</script>
+<style>
+input[type="date"]::-webkit-inner-spin-button { display: none; }
+
+    body {
+        background-color: white;
+    }
+
+    .page-main-cont {
+        background-color: white;
+        padding-top: 1rem;
+        font-size: 13px;
+        line-height: 150%;
+        width: 700px;
+        margin: auto;
+        overflow: auto;
+        font-family: 'Assistant', sans-serif;
+        direction: rtl;
+        font-weight: 300;
+    }
+
+    .page-header {
+        font-size: 2em;
+        font-weight: 700;
+        text-align: center;
+        border-bottom: 2px solid #004029;
+        color: #004029;
+        padding-bottom: 0.7rem;
+    }
+
+    .page-header-bullets {
+        font-size: 1em;
+        font-weight: normal;
+    }
+
+     /* For bold bullets */
+    .page-header-bullets-bold {
+        font-weight: bold;
+    }
+
+    .error-msg {
+        color: #d46161;
+        font-size: 1.1em;
+        text-align: center;
+        padding: 0.2rem 0;
+    }
+
+
+    .page-content-wrap {
+        background-color: #eee;
+        text-align: right;
+        color: #004029;
+    }
+
+    /* Table for text only - no borders */
+    .trans-table {
+        margin: auto;
+    }
+
+    .trans-table-line {
+        font-size: 11pt;
+        font-weight: normal;
+    }
+
+    /* Table with data - with borders */
+    .data-table {
+        margin: 1rem auto;
+        background-color: white;
+        border: 1px solid #ddd;
+        border-collapse: collapse;
+    }
+
+    .data-table-text {
+        font-size: 1em;
+    }
+
+    .data-table tr,
+    .data-table td {
+        border: 1px solid #ddd;
+        padding: 0.4rem 0.5rem;
+        font-weight: normal;
+    }
+
+    .data-table h1 {
+        font-size: 1em;
+        margin: 0;
+    }
+
+    /* If top line if different */
+    .data-table-first-line {
+        color: #004029;
+        font-weight: bold;
+    }
+
+    /* Mid-page header */
+    .page-small-header {
+        font-size: 1.2em;
+        color: #004029;
+        margin: 1rem 0 0;
+    }
+
+    /* Help number for bottom of page */
+    .magnus-help-number {
+        padding: 1rem 0;
+        font-size: 1em;
+        font-weight: normal;
+        color: #004029;
+        background-color: #f3f3f3;
+    }
+
+
+    /* for apex:selectList */
+    .input-select {
+        max-width: 100%;
+        border-style: none;
+        background-color: white;
+        height: 2rem;
+        font-size: 1em;
+        min-width: 16.6rem;
+    }
+
+    /* for apex:inputField */
+    .input-one-text-field {
+        background: white;
+        border-style: none;
+        padding: 2px 8px 2px 2px;
+        height: 1.8rem;
+        min-width: 16rem;
+    }
+
+    /* for apex:commandButton */
+    .command-button {
+        background-color: #005d3e;
+        color: white;
+        padding: 0.5rem;
+        margin: 0.2rem;
+    }
+
+    .command-button:hover {
+        background-color: #007a54;
+    }
+    .loader {
+        border: 4px solid white;
+        border-top: 10px solid black;
+        border-radius: 50%;
+        width: 100px;
+        height: 100px;
+        margin-top:500px;
+        animation: spin 2s linear infinite;
+        display:none;
+    }
+    .overlay {
+        display:none;
+        opacity:0.8;
+        background-color:#ccc;
+        position:fixed;
+        width:100%;
+        height:100%;
+        top:0px;
+        left:0px;
+        z-index:1000;
+    }
+    @keyframes spin {
+        0% { transform: rotate(0deg); }
+        100% { transform: rotate(360deg); }
+    }
+</style>
+<div>
+    <div class="page-main-cont">
+        <apex:image url="{!URLFOR($Resource.magnuspic)}" width="700"/>
+            <div>
+                <h3 class="page-header">הארכת שירות</h3>
+                <div class="page-content-wrap">
+                    <apex:form >
+                        <apex:outputpanel id="errors">
+                        <div id="overlay" align="center" class="overlay"><div id="load" class="loader"/></div>
+                            <Script>
+                                var ret = {!errMsgs['RetDate']};
+                                var pick = {!errMsgs['Pickup']};
+                                function check_certain_condition() {
+                                    if (ret == false && pick == false) {
+                                        document.getElementById('submitzilla').click();
+                                    }
+                                }
+                            </Script>
+                            <apex:outputPanel rendered="{!errMsgs['RetDate']}" id="RetDate-err">
+                                <h1 class="error-msg">אנא בחר תאריך חזרה עדכני לא בסוף שבוע</h1>
+                            </apex:outputPanel>
+                        </apex:outputpanel>
+                        <table class="trans-table">
+                            <tr>
+                                <td></td>
+                            </tr>
+                            <tr>
+                                <td >
+                                    <h1 class="trans-table-line">
+                                        תאריך איסוף מקורי:</h1>
+                                </td>
+                                <td>
+                                    <apex:outputText value="{!orgdat}"></apex:outputText>
+                                </td>
+                                </tr>
+                                <tr>
+                                <td>
+                                    <h1 class="trans-table-line">
+                                        תאריך החזרה מקורי:</h1>
+                                </td>
+                                <td>
+                                    <apex:outputText value="{!olddat}"></apex:outputText>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <h1 class="trans-table-line">
+                                        תאריך החזרה עדכני:</h1>
+                                </td>
+                                </tr>
+                                <tr>
+                                <td>
+                                <style>
+                                    div.hideCurrDate span.dateInput span.dateFormat{
+                                       display:none;
+                                    }
+                                </style>
+                                <div class="hideCurrDate">
+                                    <apex:inputField styleClass="input-one-text-field" type="date" showDatePicker="TRUE" value="{!uptcc.Return_Date_Updated__c}" required="true">
+                                    <apex:actionSupport event="onchange" action="{!Calc}" reRender="numdays,form,total,posting,up1,up2,up3"/>
+                                        <apex:actionSupport event="onselect" action="{!Calc}" reRender="numdays,form,total,posting,up1,up2,up3"/>
+                                    </apex:inputField>
+                                </div>
+                                </td>
+                            </tr>
+                            <tr>
+                            <td>
+                            <apex:outputPanel id="up1">
+                            <apex:outputPanel rendered="{!Advanced}">
+                                <h1 class="trans-table-line">
+                                    סוג תוכנית:
+                                    </h1>
+                            </apex:outputPanel>
+                            </apex:outputPanel>
+                            </td>
+                            </tr>
+                            <tr>
+                            <td>
+                             <apex:outputPanel id="up2">
+                               <apex:outputPanel rendered="{!Advanced}">
+                                <apex:selectList styleclass="input-select" value="{!selectedPlan}" multiselect="false" size="1">
+                                    <apex:actionSupport event="onchange" action="{!changePlan}" reRender="numdays,form,total,posting,up3"/>
+                                    <apex:selectOptions value="{!plans}"/>
+                                </apex:selectList>
+                                </apex:outputPanel>
+                               </apex:outputPanel>
+                            <apex:outputPanel id="up3">
+                               <apex:outputPanel rendered="{!Advanced}">
+                               <h1 class="trans-table-line">
+                                    עלות שדרוג:
+                                    {!upPrice}
+                                    </h1>
+                                     </apex:outputPanel>
+                               </apex:outputPanel>
+                            </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <apex:outputPanel id="errors3">
+                                        <apex:outputPanel rendered="{!errMsgs['Pickup']}" id="Pickup-err">
+                                            <h1 class="error-msg">אנא בחר זמן איסוף מכשיר מנתב"ג</h1>
+                                        </apex:outputPanel>
+                                    </apex:outputPanel>
+                                    <h1 class="trans-table-line">
+                                        <apex:outputPanel rendered="{!OR(ShowNatbagPick,ShowNatbagRet)}">
+                                            <br/>
+                                            לאיסוף/החזרה מנתב"ג בתוספת תשלום של 49 ש"ח לכל כיוון:
+                                        </apex:outputPanel>
+                                        <br/>
+                                        <apex:outputPanel rendered="{!ShowNatbagPick}">
+                                            <apex:inputCheckbox value="{!uptcc.Pickup_in_Natbag__c}" rendered="{!SevenDays}">
+                                                <apex:actionSupport event="onchange" action="{!Calc}" reRender="numdays,form,total,posting,pickup"/>
+                                            </apex:inputCheckbox><span style="{!if(SevenDays=false,'display:none;','')}"> איסוף מנתב"ג</span>
+                                            <apex:outputPanel id="pickup">
+                                                <apex:outputPanel rendered="{!AND(uptcc.Pickup_in_Natbag__c,SevenDays)}">
+                                                    <br/>
+                                                    <br/>שעת איסוף מנתב"ג
+                                                    <br/>
+                                                    <apex:inputField styleClass="input-one-text-field" type="time" value="{!uptcc.Pickup_Time__c}"/>
+                                                    <br/>
+                                                </apex:outputPanel>
+                                            </apex:outputPanel>
+                                            <br/>
+                                        </apex:outputPanel>
+                                        <apex:outputPanel rendered="{!ShowNatbagRet}">
+                                            <apex:inputCheckbox value="{!uptcc.Return_in_Natbag__c}">
+                                                <apex:actionSupport event="onchange" action="{!Calc}" reRender="numdays,form,total,posting"/>
+                                            </apex:inputCheckbox> החזרה לנתב"ג
+                                        </apex:outputPanel>
+                                    </h1>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <h1 class="trans-table-line">
+                                        תוספת מס' ימי שירות:</h1>
+                                </td>
+                                </tr>
+                                <tr>
+                                <td>
+                                     <apex:outputpanel id="numdays">
+                                        <apex:outputText value="{!Days}"/>
+                                    </apex:outputPanel>
+                                </td>
+                            </tr>
+                            <apex:inputHidden rendered="{!disco}">
+                                <tr>
+                                    <td>
+                                        <h1 class="trans-table-line">
+                                            הנחה:</h1>
+                                    </td>
+                                    </tr>
+                                    <tr>
+                                    <td>
+                                        <apex:outputText value="{!uptcc.discount__c}%"/>
+                                    </td>
+                                </tr>
+                            </apex:inputHidden>
+                            <tr style="{!if(rikushet==true,'','display:none;')}">
+                                <td>
+                                    <h1 class="trans-table-line">
+                                        מחיר ליום:</h1>
+                                </td>
+                                </tr>
+                                <tr>
+                                <td>
+                                    {!step1}
+                                </td>
+                            </tr>
+                            </table>
+                            <apex:outputpanel id="form">
+                            <table class="data-table data-table-first-line" style="{!if(rikushet==true,'display:none;','')}">
+                                <tr>
+                                    <td>
+                                    <h1 class="data-table-text">
+                                        תעריפים:
+                                    </h1>
+                                    </td>
+                                    <td>
+                                    <h1 class="data-table-text">
+                                        ימים ששולמו:
+                                    </h1>
+                                    </td>
+                                    <td>
+                                    <h1 class="data-table-text">
+                                        ימים לעדכון:
+                                    </h1>
+                                    </td>
+                                    <td>
+                                    <h1 class="data-table-text">
+                                         מחיר ליום:
+                                        </h1>
+                                    </td>
+                                    <td>
+                                    <h1 class="data-table-text">
+                                        סה"כ:
+                                        </h1>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <h1>
+                                            <apex:outputText value="תעריף לעד {0, number,###} ימים"><apex:param value="{!tcc.Step_Size1__c}" /></apex:outputText>
+                                    </h1>
+                                    </td>
+                                    <td>
+                                    {!oldstep1}
+                                    </td>
+                                    <td>
+                                    {!daysm1}
+                                    </td>
+                                    <td>
+                                    {!step1}
+                                    </td>
+                                    <td>
+                                    {!pricem1}
+                                    </td>
+                                </tr>
+                                <tr  style="{!IF(tcc.Step_Size2__c!=null,'','display:none')}">
+                                    <td>
+                                        <h1 class="trans-table-line">
+                                            <apex:outputText value="תעריף לעד {0, number,###} ימים"><apex:param value="{!tcc.Step_Size2__c}" /></apex:outputText>
+                                        </h1>
+                                    </td>
+                                    <td>
+                                    {!oldstep2}
+                                    </td>
+                                    <td>
+                                    {!daysm2}
+                                    </td>
+                                    <td>
+                                    {!step2}
+                                    </td>
+                                    <td>
+                                    {!pricem2}
+                                    </td>
+                                </tr>
+                                <tr  style="{!IF(tcc.Step_Size3__c!=null,'','display:none')}">
+                                    <td>
+                                        <h1 class="trans-table-line">
+                                            <apex:outputText value="תעריף לעד {0, number,###} ימים"><apex:param value="{!tcc.Step_Size3__c}" /></apex:outputText>
+                                        </h1>
+                                    </td>
+                                    <td>
+                                    {!oldstep3}
+                                    </td>
+                                    <td>
+                                        {!daysm3}
+                                    </td>
+                                    <td>
+                                    {!step3}
+                                    </td>
+                                    <td>
+                                            {!pricem3}
+                                    </td>
+                                </tr>
+                                <tr  style="{!IF(tcc.Step_Size4__c!=null,'','display:none')}">
+                                    <td>
+                                        <h1 class="trans-table-line">
+                                            <apex:outputText value="תעריף לעד {0, number,###} ימים"><apex:param value="{!tcc.Step_Size4__c}" /></apex:outputText>
+                                        </h1>
+                                    </td>
+                                    <td>
+                                    {!oldstep4}
+                                    </td>
+                                    <td>
+                                        {!daysm4}
+                                    </td>
+                                    <td>
+                                    {!step4}
+                                    </td>
+                                    <td>
+                                            {!pricem4}
+                                    </td>
+                                </tr>
+                            </table>
+                            </apex:outputPanel>
+                            <table class="trans-table">
+                            <tr>
+                            <td>
+                                <h1 class="page-small-header" style="text-align:center;">
+                                    <apex:outputpanel id="total">
+                                    מחיר סופי:<br/>
+                                    <bdo dir="ltr"><apex:outputText value="{!Price}" style="{!if(price<0,'color:red;','')}"/></bdo>
+                                    </apex:outputPanel>
+                                    </h1>
+                            </td>
+                            </tr>
+                            <tr>
+                            <br/>
+                                <td>
+                                <apex:outputPanel rendered="{!IF(admin='1',true,false)}">
+                                <div align="center">
+                                  <h1 class="trans-table-line">
+                                הערות :
+                                </h1>
+                                </div>
+                                </apex:outputPanel>
+                                </td>
+                                </tr>
+                                <tr>
+                                <br/>
+                                <td>
+                                <apex:outputPanel rendered="{!IF(admin='1',true,false)}">
+                                <div align="center">
+                                <apex:inputTextarea styleclass="input-one-text-field" value="{!recNotes}">
+                                <apex:actionSupport event="onchange" action="{!Calc}" reRender="numdays,form,total,posting"/>
+                                </apex:inputTextarea>
+                                </div>
+                                </apex:outputPanel>
+                                </td>
+                            </tr>
+                            <tr>
+                            <br/>
+                                <td>
+                                <div align="center">
+                                <apex:commandButton styleclass="command-button" value="לתשלום אחד באשראי המסתיים ב-{!digitcard}" action="{!Submit}" onclick="load();" reRender="errors,errors3" rendered="{!digitcard!=null}"/>
+                                <apex:commandButton styleclass="command-button" value="פריסה לתשלומים ו/או חיוב באשראי אחר" action="{!submitElse}" oncomplete="check_certain_condition();" onclick="load();" reRender="errors,errors3" rendered="{!digitcard!=null}"/>
+                                <apex:commandButton styleclass="command-button" value="לתשלום" action="{!submitElse}" oncomplete="check_certain_condition();" onclick="load();" reRender="errors,errors3" rendered="{!digitcard=null}"/>
+                                <p>
+                                לכל שאלה - שירות הלקוחות 03-8006808
+                                </p>
+</div>
+                                </td>
+                            </tr>
+                        </table>
+                    </apex:form>
+                    <apex:outputpanel id="posting">
+                        <form ACTION="https://direct.tranzila.com/magnusinte/" method="POST">
+                            <input type="hidden" name="sum" value="{!ROUND(price,2)}"/>
+                            <input type="hidden" name="contact" value="{!accadd.Name}"/>
+                            <input type="hidden" name="email" value="{!accadd.PersonEmail}"/>
+                            <input type="hidden" name="phone" value="{!accadd.PersonMobilePhone}"/>
+                            <input type="hidden" name="SF_Transaction_Id" value="{!newiddata}"/>
+                            <input type="hidden" name="tranmode" value="AK"/>
+                            <input type="hidden" name="cred_type" value="8"/>
+                            <input type="hidden" name="maxpay" value="{!nump}"/>
+                            <input type="hidden" name="IMaam" value="0"/>
+                            <input id="submitzilla" type="submit" value=" Send " style="display: none;"/>
+                        </form>
+                    </apex:outputpanel>
+                </div>
+            </div>
+        </div>
+    </div>
+</apex:page>
