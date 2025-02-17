@@ -87,7 +87,7 @@
                             <input type="hidden" name="cred_type" value="8"/>
                             <input type="hidden" name="maxpay" value="10"/>
                             <input type="hidden" name="currency" value="{!IF(ptc.CurrencyIsoCode='USD','2','1')}"/>
-                            <input type="hidden" name="IMaam" value="0.17"/>
+                            <input type="hidden" name="IMaam" value="0.18"/>
                             <input type="hidden" name="json_purchase_data" value="{!products}"/>
                             <input id="submitzilla" type="submit" value=" Send " style="display: none;"/>
                         </form>
