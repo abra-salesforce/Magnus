@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>status__c</fullName>
+    <label>מצב</label>
+    <required>false</required>
+    <trackHistory>true</trackHistory>
+    <trackTrending>false</trackTrending>
+    <type>Picklist</type>
+    <valueSet>
+        <restricted>true</restricted>
+        <valueSetDefinition>
+            <sorted>false</sorted>
+            <value>
+                <fullName>לתיקון</fullName>
+                <default>false</default>
+                <label>לתיקון</label>
+            </value>
+            <value>
+                <fullName>מושבת</fullName>
+                <default>false</default>
+                <label>מושבת</label>
+            </value>
+            <value>
+                <fullName>נגנב</fullName>
+                <default>false</default>
+                <label>נגנב</label>
+            </value>
+            <value>
+                <fullName>פרזנטור</fullName>
+                <default>false</default>
+                <label>פרזנטור</label>
+            </value>
+            <value>
+                <fullName>מוכן ללקוח</fullName>
+                <default>true</default>
+                <label>מוכן ללקוח</label>
+            </value>
+            <value>
+                <fullName>אצל לקוח</fullName>
+                <default>false</default>
+                <label>אצל לקוח</label>
+            </value>
+            <value>
+                <fullName>תקין</fullName>
+                <default>false</default>
+                <label>תקין</label>
+            </value>
+            <value>
+                <fullName>לבדיקה</fullName>
+                <default>false</default>
+                <label>לבדיקה</label>
+            </value>
+            <value>
+                <fullName>הוחזר</fullName>
+                <default>false</default>
+                <isActive>false</isActive>
+                <label>הוחזר</label>
+            </value>
+            <value>
+                <fullName>נגרע</fullName>
+                <default>false</default>
+                <isActive>false</isActive>
+                <label>נגרע</label>
+            </value>
+        </valueSetDefinition>
+    </valueSet>
+</CustomField>

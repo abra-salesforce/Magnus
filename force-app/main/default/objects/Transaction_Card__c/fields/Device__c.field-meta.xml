@@ -1,0 +1,99 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Device__c</fullName>
+    <label>מכשיר</label>
+    <required>false</required>
+    <trackHistory>true</trackHistory>
+    <trackTrending>false</trackTrending>
+    <type>Picklist</type>
+    <valueSet>
+        <valueSetDefinition>
+            <sorted>false</sorted>
+            <value>
+                <fullName>A</fullName>
+                <default>false</default>
+                <label>מכשיר A</label>
+            </value>
+            <value>
+                <fullName>SE+</fullName>
+                <default>false</default>
+                <label>מכשיר SE+</label>
+            </value>
+            <value>
+                <fullName>Mini</fullName>
+                <default>false</default>
+                <label>מכשיר  mini</label>
+            </value>
+            <value>
+                <fullName>MINI 2</fullName>
+                <default>false</default>
+                <label>MINI 2</label>
+            </value>
+            <value>
+                <fullName>A - מטיילים בחול</fullName>
+                <default>false</default>
+                <label>A - מטיילים בחול</label>
+            </value>
+            <value>
+                <fullName>A - מטיילים בארץ</fullName>
+                <default>false</default>
+                <label>A - מטיילים בארץ</label>
+            </value>
+            <value>
+                <fullName>MINI - מטיילים בחול</fullName>
+                <default>false</default>
+                <label>MINI - מטיילים בחול</label>
+            </value>
+            <value>
+                <fullName>MINI - מטיילים בארץ</fullName>
+                <default>false</default>
+                <label>MINI - מטיילים בארץ</label>
+            </value>
+            <value>
+                <fullName>Iridium 9555</fullName>
+                <default>false</default>
+                <label>Iridium 9555</label>
+            </value>
+            <value>
+                <fullName>SE</fullName>
+                <default>false</default>
+                <label>SE</label>
+            </value>
+            <value>
+                <fullName>Messenger</fullName>
+                <default>false</default>
+                <label>Messenger</label>
+            </value>
+            <value>
+                <fullName>MINI 2 - מטיילים בארץ</fullName>
+                <default>false</default>
+                <label>MINI 2 - מטיילים בארץ</label>
+            </value>
+            <value>
+                <fullName>MINI 2 - מטיילים בחו&quot;ל</fullName>
+                <default>false</default>
+                <label>MINI 2 - מטיילים בחו&quot;ל</label>
+            </value>
+            <value>
+                <fullName>Messenger - מטיילים בארץ</fullName>
+                <default>false</default>
+                <label>Messenger - מטיילים בארץ</label>
+            </value>
+            <value>
+                <fullName>Messenger - מטיילים בחו&quot;ל</fullName>
+                <default>false</default>
+                <label>Messenger - מטיילים בחו&quot;ל</label>
+            </value>
+            <value>
+                <fullName>SE+ - מטיילים בארץ</fullName>
+                <default>false</default>
+                <label>SE+ - מטיילים בארץ</label>
+            </value>
+            <value>
+                <fullName>SE+ - מטיילים בחו&quot;ל</fullName>
+                <default>false</default>
+                <label>SE+ - מטיילים בחו&quot;ל</label>
+            </value>
+        </valueSetDefinition>
+    </valueSet>
+</CustomField>

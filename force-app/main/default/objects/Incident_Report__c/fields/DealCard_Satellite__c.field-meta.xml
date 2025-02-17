@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>DealCard_Satellite__c</fullName>
+    <deleteConstraint>SetNull</deleteConstraint>
+    <label>כרטיס עסקה - לקוח לוויני</label>
+    <referenceTo>Transaction_Card__c</referenceTo>
+    <relationshipLabel>Event Records</relationshipLabel>
+    <relationshipName>Event_Records</relationshipName>
+    <required>false</required>
+    <trackFeedHistory>false</trackFeedHistory>
+    <trackHistory>false</trackHistory>
+    <trackTrending>false</trackTrending>
+    <type>Lookup</type>
+</CustomField>

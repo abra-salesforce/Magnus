@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<WebLink xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>TIMBASURVEYS__Send_Survey_Case</fullName>
+    <availability>online</availability>
+    <displayType>button</displayType>
+    <linkType>javascript</linkType>
+    <masterLabel>Send Survey</masterLabel>
+    <openType>onClickJavaScript</openType>
+    <protected>false</protected>
+    <url>if (&apos;{!JSENCODE(Case.ContactId)}&apos; == &apos;&apos;) {
+    alert(&apos;This case is not associated with any contact.&apos;);
+}else{
+    window.location = &quot;/apex/timbasurveys__collectionhub?cId={!URLENCODE(Case.ContactId)}&amp;caseId={!URLENCODE(Case.Id)}&amp;retURL=&quot; + encodeURIComponent(window.location);
+}</url>
+</WebLink>

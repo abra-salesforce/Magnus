@@ -1,0 +1,159 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Field5__c</fullName>
+    <label>שם סניף</label>
+    <required>false</required>
+    <trackHistory>false</trackHistory>
+    <trackTrending>false</trackTrending>
+    <type>Picklist</type>
+    <valueSet>
+        <valueSetDefinition>
+            <sorted>false</sorted>
+            <value>
+                <fullName>אילת</fullName>
+                <default>false</default>
+                <label>אילת</label>
+            </value>
+            <value>
+                <fullName>אשדוד ביג</fullName>
+                <default>false</default>
+                <label>אשדוד ביג</label>
+            </value>
+            <value>
+                <fullName>אם הדרך</fullName>
+                <default>false</default>
+                <label>אם הדרך</label>
+            </value>
+            <value>
+                <fullName>באר שבע ביג</fullName>
+                <default>false</default>
+                <label>באר שבע ביג</label>
+            </value>
+            <value>
+                <fullName>באר שבע גראנד</fullName>
+                <default>false</default>
+                <label>באר שבע גראנד</label>
+            </value>
+            <value>
+                <fullName>ביל&quot;ו</fullName>
+                <default>false</default>
+                <label>ביל&quot;ו</label>
+            </value>
+            <value>
+                <fullName>בת ים</fullName>
+                <default>false</default>
+                <label>בת ים</label>
+            </value>
+            <value>
+                <fullName>הרצליה</fullName>
+                <default>false</default>
+                <label>הרצליה</label>
+            </value>
+            <value>
+                <fullName>חדרה</fullName>
+                <default>false</default>
+                <label>חדרה</label>
+            </value>
+            <value>
+                <fullName>חיפה גראנד קניון</fullName>
+                <default>false</default>
+                <label>חיפה גראנד קניון</label>
+            </value>
+            <value>
+                <fullName>ירושלים תלפיות</fullName>
+                <default>false</default>
+                <label>ירושלים תלפיות</label>
+            </value>
+            <value>
+                <fullName>ירושלים מאלכה</fullName>
+                <default>false</default>
+                <label>ירושלים מאלכה</label>
+            </value>
+            <value>
+                <fullName>כפר סבא</fullName>
+                <default>false</default>
+                <label>כפר סבא</label>
+            </value>
+            <value>
+                <fullName>מודיעין</fullName>
+                <default>false</default>
+                <label>מודיעין</label>
+            </value>
+            <value>
+                <fullName>נתיבות</fullName>
+                <default>false</default>
+                <label>נתיבות</label>
+            </value>
+            <value>
+                <fullName>עפולה</fullName>
+                <default>false</default>
+                <label>עפולה</label>
+            </value>
+            <value>
+                <fullName>צמח</fullName>
+                <default>false</default>
+                <label>צמח</label>
+            </value>
+            <value>
+                <fullName>קריון - קרית ביאליק</fullName>
+                <default>false</default>
+                <label>קריון - קרית ביאליק</label>
+            </value>
+            <value>
+                <fullName>קרית אונו</fullName>
+                <default>false</default>
+                <label>קרית אונו</label>
+            </value>
+            <value>
+                <fullName>ראש פינה</fullName>
+                <default>false</default>
+                <label>ראש פינה</label>
+            </value>
+            <value>
+                <fullName>ראשון לציון קניון הזהב</fullName>
+                <default>false</default>
+                <label>ראשון לציון קניון הזהב</label>
+            </value>
+            <value>
+                <fullName>רחובות קניון</fullName>
+                <default>false</default>
+                <label>רחובות קניון</label>
+            </value>
+            <value>
+                <fullName>רעננה</fullName>
+                <default>false</default>
+                <label>רעננה</label>
+            </value>
+            <value>
+                <fullName>רמת אביב</fullName>
+                <default>false</default>
+                <label>רמת אביב</label>
+            </value>
+            <value>
+                <fullName>רמת השרון</fullName>
+                <default>false</default>
+                <label>רמת השרון</label>
+            </value>
+            <value>
+                <fullName>רמת ישי</fullName>
+                <default>false</default>
+                <label>רמת ישי</label>
+            </value>
+            <value>
+                <fullName>תל אביב דיזנגוף</fullName>
+                <default>false</default>
+                <label>תל אביב דיזנגוף</label>
+            </value>
+            <value>
+                <fullName>תל אביב עזריאלי</fullName>
+                <default>false</default>
+                <label>תל אביב עזריאלי</label>
+            </value>
+            <value>
+                <fullName>אחר</fullName>
+                <default>false</default>
+                <label>אחר</label>
+            </value>
+        </valueSetDefinition>
+    </valueSet>
+</CustomField>

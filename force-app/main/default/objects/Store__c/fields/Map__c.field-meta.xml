@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Map__c</fullName>
+    <externalId>false</externalId>
+    <formula>IMAGE(&quot;http://maps.google.com/maps/api/staticmap?center=&quot; + TEXT(Location__Latitude__s) + &quot;,&quot; + TEXT(Location__Longitude__s) +&quot;&amp;zoom=16&amp;size=430x300&amp;markers=color:blue|&quot; + TEXT(Location__Latitude__s) + &quot;,&quot; + TEXT(Location__Longitude__s) + &quot;&amp;sensor=false&amp;format=png32!&quot;
+, &quot;Error retrieving map&quot;, 300, 430)</formula>
+    <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+    <label>Map</label>
+    <required>false</required>
+    <trackTrending>false</trackTrending>
+    <type>Text</type>
+    <unique>false</unique>
+</CustomField>

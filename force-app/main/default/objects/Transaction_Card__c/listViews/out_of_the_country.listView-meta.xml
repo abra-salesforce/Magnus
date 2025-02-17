@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ListView xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>out_of_the_country</fullName>
+    <columns>NAME</columns>
+    <columns>Account_Passenger__c</columns>
+    <columns>Account_Addressing__c</columns>
+    <columns>Date_Trip__c</columns>
+    <columns>Notes__c</columns>
+    <columns>IMEI__c</columns>
+    <columns>Date_of_Device_Delivery__c</columns>
+    <columns>Return_Date_Updated__c</columns>
+    <columns>Date_Of_Return__c</columns>
+    <filterScope>Everything</filterScope>
+    <filters>
+        <field>Status__c</field>
+        <operation>equals</operation>
+        <value>טיול</value>
+    </filters>
+    <label>טיול</label>
+    <language>en_US</language>
+</ListView>

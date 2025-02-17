@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ListView xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>prepared</fullName>
+    <columns>NAME</columns>
+    <columns>Inventory__c</columns>
+    <filterScope>Everything</filterScope>
+    <filters>
+        <field>Inventory__c</field>
+        <operation>equals</operation>
+        <value>מוכן ללקוח</value>
+    </filters>
+    <label>מוכן ללקוח</label>
+    <language>en_US</language>
+</ListView>

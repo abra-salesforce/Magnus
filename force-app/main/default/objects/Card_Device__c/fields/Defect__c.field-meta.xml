@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Defect__c</fullName>
+    <label>סוג תקלה</label>
+    <required>false</required>
+    <trackHistory>false</trackHistory>
+    <trackTrending>false</trackTrending>
+    <type>Picklist</type>
+    <valueSet>
+        <restricted>true</restricted>
+        <valueSetDefinition>
+            <sorted>false</sorted>
+            <value>
+                <fullName>כפתורים</fullName>
+                <default>false</default>
+                <label>כפתורים</label>
+            </value>
+            <value>
+                <fullName>שליחת הודעה</fullName>
+                <default>false</default>
+                <label>שליחת הודעה</label>
+            </value>
+            <value>
+                <fullName>סוללה</fullName>
+                <default>false</default>
+                <label>סוללה</label>
+            </value>
+            <value>
+                <fullName>מסך</fullName>
+                <default>false</default>
+                <label>מסך</label>
+            </value>
+            <value>
+                <fullName>אחר</fullName>
+                <default>false</default>
+                <label>אחר</label>
+            </value>
+            <value>
+                <fullName>אצל חיליק</fullName>
+                <default>false</default>
+                <label>אצל חיליק</label>
+            </value>
+        </valueSetDefinition>
+    </valueSet>
+</CustomField>

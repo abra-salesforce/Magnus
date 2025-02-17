@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Shift_Type__c</fullName>
+    <label>סוג משמרת</label>
+    <required>true</required>
+    <trackHistory>false</trackHistory>
+    <trackTrending>false</trackTrending>
+    <type>Picklist</type>
+    <valueSet>
+        <restricted>true</restricted>
+        <valueSetDefinition>
+            <sorted>false</sorted>
+            <value>
+                <fullName>בוקר</fullName>
+                <default>false</default>
+                <label>בוקר</label>
+            </value>
+            <value>
+                <fullName>ערב</fullName>
+                <default>false</default>
+                <label>ערב</label>
+            </value>
+            <value>
+                <fullName>לילה</fullName>
+                <default>false</default>
+                <label>לילה</label>
+            </value>
+            <value>
+                <fullName>סוף שבוע</fullName>
+                <default>false</default>
+                <label>סוף שבוע</label>
+            </value>
+            <value>
+                <fullName>Supervisor</fullName>
+                <default>false</default>
+                <label>Supervisor</label>
+            </value>
+        </valueSetDefinition>
+    </valueSet>
+</CustomField>

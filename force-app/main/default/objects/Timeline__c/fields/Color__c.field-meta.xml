@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Color__c</fullName>
+    <externalId>false</externalId>
+    <formula>IF(  ISPICKVAL(Reliability__c	, &quot;לא מאומת&quot;)   , IMAGE(&quot;/img/msg_icons/error32.png&quot;, &quot;&quot;, 30, 30),
+IF( ISPICKVAL(Reliability__c	,&quot;מאומת&quot;) , IMAGE(&quot;/img/msg_icons/confirm32.png&quot;, &quot;&quot;, 30, 30), 
+IF( ISPICKVAL(Reliability__c	,&quot;מהשטח&quot;) , IMAGE(&quot;/img/msg_icons/info32.png&quot;, &quot;&quot;, 30, 30), 
+IMAGE( &quot;/img/msg_icons/warning32.png&quot;, &quot;&quot;, 30, 30)) ))</formula>
+    <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+    <label>צבע</label>
+    <required>false</required>
+    <trackHistory>false</trackHistory>
+    <trackTrending>false</trackTrending>
+    <type>Text</type>
+    <unique>false</unique>
+</CustomField>

@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Trainings__c</fullName>
+    <deleteConstraint>SetNull</deleteConstraint>
+    <label>הדרכה</label>
+    <lookupFilter>
+        <active>false</active>
+        <filterItems>
+            <field>Trainings__c.NumberOfStudents__c</field>
+            <operation>lessThan</operation>
+            <valueField>Trainings__c.Max_Students__c</valueField>
+        </filterItems>
+        <isOptional>true</isOptional>
+    </lookupFilter>
+    <referenceTo>Trainings__c</referenceTo>
+    <relationshipLabel>כרטיס עסקה</relationshipLabel>
+    <relationshipName>Trainings</relationshipName>
+    <required>false</required>
+    <trackHistory>false</trackHistory>
+    <trackTrending>false</trackTrending>
+    <type>Lookup</type>
+</CustomField>

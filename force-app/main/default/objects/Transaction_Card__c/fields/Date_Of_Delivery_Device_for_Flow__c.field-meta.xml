@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Date_Of_Delivery_Device_for_Flow__c</fullName>
+    <externalId>false</externalId>
+    <formula>TEXT(YEAR(Date_Of_Delivery_Device__c)) &amp; &quot;-&quot; &amp;
+TEXT(MONTH(Date_Of_Delivery_Device__c)) &amp; &quot;-&quot; &amp;
+TEXT(DAY(Date_Of_Delivery_Device__c))</formula>
+    <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+    <label>Date Of Delivery Device for Flow</label>
+    <required>false</required>
+    <trackHistory>false</trackHistory>
+    <trackTrending>false</trackTrending>
+    <type>Text</type>
+    <unique>false</unique>
+</CustomField>

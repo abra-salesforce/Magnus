@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Training_Month__c</fullName>
+    <deleteConstraint>SetNull</deleteConstraint>
+    <label>חודש הדרכה</label>
+    <referenceTo>Training_Month__c</referenceTo>
+    <relationshipLabel>כרטיסי הדרכות</relationshipLabel>
+    <relationshipName>Trainings</relationshipName>
+    <required>false</required>
+    <trackTrending>false</trackTrending>
+    <type>Lookup</type>
+</CustomField>

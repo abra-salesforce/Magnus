@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ListView xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>out_of_the_country_Bytes_Payment</fullName>
+    <columns>NAME</columns>
+    <columns>Account_Passenger__c</columns>
+    <columns>Account_Addressing__c</columns>
+    <columns>Date_Trip__c</columns>
+    <columns>Date_Of_Delivery_Device__c</columns>
+    <columns>Notes__c</columns>
+    <columns>Status__c</columns>
+    <columns>Trainings__c</columns>
+    <columns>IMEI__c</columns>
+    <columns>OWNER.ALIAS</columns>
+    <columns>Canceled_Reason__c</columns>
+    <filterScope>Everything</filterScope>
+    <filters>
+        <field>Status__c</field>
+        <operation>equals</operation>
+        <value>טיול</value>
+    </filters>
+    <filters>
+        <field>Trip_Status__c</field>
+        <operation>equals</operation>
+        <value>תשלום בייטים</value>
+    </filters>
+    <label>טיול - תשלום בייטים</label>
+    <language>en_US</language>
+</ListView>

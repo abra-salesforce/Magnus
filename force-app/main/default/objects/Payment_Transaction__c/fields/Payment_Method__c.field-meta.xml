@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Payment_Method__c</fullName>
+    <label>אמצעי תשלום</label>
+    <required>false</required>
+    <trackTrending>false</trackTrending>
+    <type>Picklist</type>
+    <valueSet>
+        <restricted>true</restricted>
+        <valueSetDefinition>
+            <sorted>false</sorted>
+            <value>
+                <fullName>אשראי</fullName>
+                <default>false</default>
+                <label>אשראי</label>
+            </value>
+            <value>
+                <fullName>מזומן</fullName>
+                <default>false</default>
+                <label>מזומן</label>
+            </value>
+            <value>
+                <fullName>צ&apos;ק</fullName>
+                <default>false</default>
+                <label>צ&apos;ק</label>
+            </value>
+        </valueSetDefinition>
+    </valueSet>
+</CustomField>

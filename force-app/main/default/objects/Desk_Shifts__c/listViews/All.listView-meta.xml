@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ListView xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>All</fullName>
+    <columns>NAME</columns>
+    <columns>Employee_Shift__c</columns>
+    <columns>Shift_Type__c</columns>
+    <columns>Shift_start_time__c</columns>
+    <columns>Shift_end_time__c</columns>
+    <columns>Employee_and_Shift__c</columns>
+    <filterScope>Everything</filterScope>
+    <label>All</label>
+</ListView>

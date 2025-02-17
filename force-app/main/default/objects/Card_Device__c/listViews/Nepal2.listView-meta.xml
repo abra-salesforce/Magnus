@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ListView xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Nepal2</fullName>
+    <columns>NAME</columns>
+    <columns>IMEI__c</columns>
+    <columns>Satdesk__c</columns>
+    <columns>model__c</columns>
+    <columns>Inventory__c</columns>
+    <columns>DeviceLocation__c</columns>
+    <filterScope>Everything</filterScope>
+    <filters>
+        <field>DeviceLocation__c</field>
+        <operation>equals</operation>
+        <value>נפאל</value>
+    </filters>
+    <label>נפאל</label>
+    <language>en_US</language>
+</ListView>

@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ValidationRule xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Validate_CVV</fullName>
+    <active>true</active>
+    <description>ולידציה על שדה cvv - רק ספרות, אורך 3</description>
+    <errorConditionFormula>AND(
+NOT(ISBLANK(CVV__c)),
+OR(
+LEN(CVV__c)&lt;&gt;3,
+NOT(ISNUMBER(CVV__c))
+))</errorConditionFormula>
+    <errorDisplayField>CVV__c</errorDisplayField>
+    <errorMessage>מספר CVV שהוקלד אינו תקין - אנא הזינו מספר באורך 3 ספרות המכיל ספרות בלבד.</errorMessage>
+</ValidationRule>

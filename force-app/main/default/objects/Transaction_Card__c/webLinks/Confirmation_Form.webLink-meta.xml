@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<WebLink xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Confirmation_Form</fullName>
+    <availability>online</availability>
+    <description>else{var status = &apos;טופס מאושר&apos;;
+{!Transaction_Card__c.Status__c}=status;</description>
+    <displayType>button</displayType>
+    <linkType>javascript</linkType>
+    <masterLabel>אישור טופס</masterLabel>
+    <openType>onClickJavaScript</openType>
+    <protected>false</protected>
+    <url>{!REQUIRESCRIPT(&quot;/soap/ajax/20.0/connection.js&quot;)} 
+{!REQUIRESCRIPT(&quot;/soap/ajax/20.0/apex.js&quot;)} 
+ 
+var submit = {!Transaction_Card__c.Submit__c}; 
+
+if (submit === 0) { 
+    alert(&quot;לא ניתן לאשר את הטופס, שלח טופס חדש ללקוח&quot;); 
+} 
+else {
+    var obj = new sforce.SObject(&quot;Transaction_Card__c&quot;); 
+    obj.Id= &quot;{!Transaction_Card__c.Id}&quot;; 
+    obj.Status__c = &apos;טופס מאושר&apos;; 
+    sforce.connection.update([obj]); 
+}
+
+window.location.reload();</url>
+</WebLink>

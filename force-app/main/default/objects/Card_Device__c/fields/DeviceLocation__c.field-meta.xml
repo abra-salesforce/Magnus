@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>DeviceLocation__c</fullName>
+    <label>תפוצה בבתי עסק</label>
+    <required>false</required>
+    <trackHistory>false</trackHistory>
+    <trackTrending>false</trackTrending>
+    <type>Picklist</type>
+    <valueSet>
+        <restricted>true</restricted>
+        <valueSetDefinition>
+            <sorted>false</sorted>
+            <value>
+                <fullName>מגנוס</fullName>
+                <default>true</default>
+                <label>מגנוס</label>
+            </value>
+            <value>
+                <fullName>בית חב&quot;ד קטמנדו</fullName>
+                <default>false</default>
+                <label>בית חב&quot;ד קטמנדו</label>
+            </value>
+            <value>
+                <fullName>מחלצים</fullName>
+                <default>false</default>
+                <label>מחלצים</label>
+            </value>
+            <value>
+                <fullName>נפאל</fullName>
+                <default>false</default>
+                <label>נפאל</label>
+            </value>
+        </valueSetDefinition>
+    </valueSet>
+</CustomField>

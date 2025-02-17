@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Field9__c</fullName>
+    <label>מקור עסקה</label>
+    <required>false</required>
+    <trackHistory>false</trackHistory>
+    <trackTrending>false</trackTrending>
+    <type>Picklist</type>
+    <valueSet>
+        <valueSetDefinition>
+            <sorted>false</sorted>
+            <value>
+                <fullName>ריקושט:  הוזמן ושולם</fullName>
+                <default>false</default>
+                <label>ריקושט:  הוזמן ושולם</label>
+            </value>
+            <value>
+                <fullName>מגנוס - ריקושט: פנה למגנוס, הופנה לריקושט ושילם בריקושט</fullName>
+                <default>false</default>
+                <label>מגנוס - ריקושט: פנה למגנוס, הופנה לריקושט ושילם בריקושט</label>
+            </value>
+            <value>
+                <fullName>איסוף ריקושט: שולם במגנוס, איסוף בריקושט</fullName>
+                <default>false</default>
+                <label>איסוף ריקושט: שולם במגנוס, איסוף בריקושט</label>
+            </value>
+            <value>
+                <fullName>ריקושט מגנוס: שולם בריקושט, איסוף במגנוס</fullName>
+                <default>false</default>
+                <label>ריקושט מגנוס: שולם בריקושט, איסוף במגנוס</label>
+            </value>
+            <value>
+                <fullName>החזרה בלבד: שולם ונאסף במגנוס, הוחזר בריקושט</fullName>
+                <default>false</default>
+                <label>החזרה בלבד: שולם ונאסף במגנוס, הוחזר בריקושט</label>
+            </value>
+        </valueSetDefinition>
+    </valueSet>
+</CustomField>

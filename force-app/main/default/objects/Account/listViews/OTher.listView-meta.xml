@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ListView xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>OTher</fullName>
+    <columns>ACCOUNT.NAME</columns>
+    <columns>ACCOUNT.ADDRESS1_STATE</columns>
+    <columns>ACCOUNT.PHONE1</columns>
+    <columns>ACCOUNT.TYPE</columns>
+    <columns>CORE.USERS.ALIAS</columns>
+    <columns>Get_To_magnus__c</columns>
+    <filterScope>Everything</filterScope>
+    <filters>
+        <field>Get_To_magnus__c</field>
+        <operation>equals</operation>
+        <value>אחר</value>
+    </filters>
+    <label>OTher</label>
+    <language>en_US</language>
+</ListView>

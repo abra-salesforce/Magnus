@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ListView xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>View1</fullName>
+    <columns>NAME</columns>
+    <columns>Account_Passenger__c</columns>
+    <columns>Device__c</columns>
+    <columns>Training_Date__c</columns>
+    <columns>Date_Of_Delivery_Device__c</columns>
+    <columns>Status__c</columns>
+    <columns>All_Notes__c</columns>
+    <filterScope>Everything</filterScope>
+    <filters>
+        <field>Token_Id__c</field>
+        <operation>equals</operation>
+    </filters>
+    <filters>
+        <field>Manual_Transaction__c</field>
+        <operation>equals</operation>
+        <value>1</value>
+    </filters>
+    <filters>
+        <field>Status__c</field>
+        <operation>notEqual</operation>
+        <value>הסתיים,לא מעוניין</value>
+    </filters>
+    <label>חיובים וסגירות תשלום</label>
+    <language>en_US</language>
+</ListView>

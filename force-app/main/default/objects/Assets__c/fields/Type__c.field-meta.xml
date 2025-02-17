@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Type__c</fullName>
+    <label>סוג</label>
+    <required>false</required>
+    <trackTrending>false</trackTrending>
+    <type>Picklist</type>
+    <valueSet>
+        <restricted>true</restricted>
+        <valueSetDefinition>
+            <sorted>true</sorted>
+            <value>
+                <fullName>אסטים</fullName>
+                <default>false</default>
+                <label>אסטים</label>
+            </value>
+            <value>
+                <fullName>ספקי ציוד</fullName>
+                <default>false</default>
+                <label>ספקי ציוד</label>
+            </value>
+            <value>
+                <fullName>צוות</fullName>
+                <default>false</default>
+                <label>צוות</label>
+            </value>
+        </valueSetDefinition>
+    </valueSet>
+</CustomField>

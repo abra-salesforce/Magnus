@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>USD_to_ILS__c</fullName>
+    <formula>If (Days_Of_Planned_Service__c &lt; 181 ,
+(Cost_Calculated_Planned_N__c/(Days_Of_Planned_Service__c * Step_Price1__c) ) / ((1 - discount__c)) ,
+((Cost_Calculated_Planned_N__c / (((Days_Of_Planned_Service__c-181) * Step_Price2__c) + (181 * Step_Price1__c))) / ((1 - discount__c))))</formula>
+    <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+    <label>USD_to_ILS</label>
+    <precision>18</precision>
+    <required>false</required>
+    <scale>2</scale>
+    <trackHistory>false</trackHistory>
+    <trackTrending>false</trackTrending>
+    <type>Currency</type>
+</CustomField>

@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ListView xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Magnus_Safety_B2C</fullName>
+    <columns>NAME</columns>
+    <columns>Account_Passenger__c</columns>
+    <columns>Period_end__c</columns>
+    <columns>Email_Forms__c</columns>
+    <filterScope>Everything</filterScope>
+    <filters>
+        <field>RECORDTYPE</field>
+        <operation>equals</operation>
+        <value>Transaction_Card__c.MAGNUSafety</value>
+    </filters>
+    <filters>
+        <field>User_Status__c</field>
+        <operation>equals</operation>
+        <value>Active</value>
+    </filters>
+    <filters>
+        <field>Period_end__c</field>
+        <operation>lessOrEqual</operation>
+        <value>YESTERDAY</value>
+    </filters>
+    <label>Magnus Safety - End Membership</label>
+</ListView>

@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Price_per_days_1__c</fullName>
+    <externalId>false</externalId>
+    <formula>IF( OR( ISPICKVAL(Device__c , &quot;מכשיר A&quot;) ,  ISPICKVAL(Device__c , &quot;A - מטיילים בארץ&quot;) ,  ISPICKVAL(Device__c , &quot;A - מטיילים בחול&quot;)), 2.5,
+IF( OR( ISPICKVAL(Device__c , &quot;מכשיר SE+&quot;) ,  ISPICKVAL(Device__c , &quot;SE+ - מטיילים בארץ&quot;) ,  ISPICKVAL(Device__c , &quot;SE+ - מטיילים בחול&quot;)), 3,
+IF( OR( ISPICKVAL(Device__c , &quot;מכשיר mini&quot;) ,  ISPICKVAL(Device__c , &quot;MINI - מטיילים בחול&quot;) ,  ISPICKVAL(Device__c , &quot;MINI - מטיילים בארץ&quot;)), 3.5,
+IF( OR( ISPICKVAL(Device__c , &quot;MINI 2&quot;) ,  ISPICKVAL(Device__c , &quot;MINI2 - מטיילים בחול&quot;) ,  ISPICKVAL(Device__c , &quot;MINI2 - מטיילים בארץ&quot;)), 3.9
+,0
+)
+)
+)
+)</formula>
+    <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+    <label>מחיר מדרגה 1</label>
+    <precision>18</precision>
+    <required>false</required>
+    <scale>2</scale>
+    <trackHistory>false</trackHistory>
+    <trackTrending>false</trackTrending>
+    <type>Number</type>
+    <unique>false</unique>
+</CustomField>

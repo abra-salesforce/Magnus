@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Shift_start_time__c</fullName>
+    <formula>CASE( Shift_Type__c ,
+&quot;בוקר&quot;,
+DATETIMEVALUE(
+TEXT(YEAR(Shift_Date__c))+&quot;-&quot; + 
+TEXT(MONTH(Shift_Date__c))+&quot;-&quot; +
+TEXT(DAY(Shift_Date__c))+ &quot; &quot; + &quot;7:00:00&quot;),
+&quot;ערב&quot;,
+DATETIMEVALUE(
+TEXT(YEAR(Shift_Date__c))+&quot;-&quot; + 
+TEXT(MONTH(Shift_Date__c))+&quot;-&quot; +
+TEXT(DAY(Shift_Date__c))+ &quot; &quot; + &quot;16:00:00&quot;),
+&quot;לילה&quot;,
+DATETIMEVALUE(
+TEXT(YEAR(Shift_Date__c -1 ))+&quot;-&quot; + 
+TEXT(MONTH(Shift_Date__c -1 ))+&quot;-&quot; +
+TEXT(DAY(Shift_Date__c - 1))+ &quot; &quot; + &quot;23:30:00&quot;),
+DATETIMEVALUE(
+TEXT(YEAR(Shift_Date__c))+&quot;-&quot; + 
+TEXT(MONTH(Shift_Date__c))+&quot;-&quot; +
+TEXT(DAY(Shift_Date__c))+ &quot; &quot; + &quot;7:00:00&quot;)
+)</formula>
+    <label>זמן התחלת משמרת</label>
+    <required>false</required>
+    <trackHistory>false</trackHistory>
+    <trackTrending>false</trackTrending>
+    <type>DateTime</type>
+</CustomField>

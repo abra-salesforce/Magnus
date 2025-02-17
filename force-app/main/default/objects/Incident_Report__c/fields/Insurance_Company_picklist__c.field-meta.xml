@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Insurance_Company_picklist__c</fullName>
+    <label>Insurance Company</label>
+    <required>false</required>
+    <trackFeedHistory>false</trackFeedHistory>
+    <trackHistory>false</trackHistory>
+    <trackTrending>false</trackTrending>
+    <type>Picklist</type>
+    <valueSet>
+        <restricted>true</restricted>
+        <valueSetDefinition>
+            <sorted>false</sorted>
+            <value>
+                <fullName>Migdal</fullName>
+                <default>false</default>
+                <label>Migdal</label>
+            </value>
+            <value>
+                <fullName>Phoenix</fullName>
+                <default>false</default>
+                <label>Phoenix</label>
+            </value>
+            <value>
+                <fullName>AIG</fullName>
+                <default>false</default>
+                <label>AIG</label>
+            </value>
+            <value>
+                <fullName>Bituach Yashir</fullName>
+                <default>false</default>
+                <label>Bituach Yashir</label>
+            </value>
+            <value>
+                <fullName>PassportCard</fullName>
+                <default>false</default>
+                <label>PassportCard</label>
+            </value>
+            <value>
+                <fullName>Harel</fullName>
+                <default>false</default>
+                <label>Harel</label>
+            </value>
+            <value>
+                <fullName>Clal</fullName>
+                <default>false</default>
+                <label>Clal</label>
+            </value>
+            <value>
+                <fullName>Shirbit</fullName>
+                <default>false</default>
+                <label>Shirbit</label>
+            </value>
+            <value>
+                <fullName>Menora</fullName>
+                <default>false</default>
+                <label>Menora</label>
+            </value>
+            <value>
+                <fullName>Hachshara</fullName>
+                <default>false</default>
+                <label>Hachshara</label>
+            </value>
+            <value>
+                <fullName>Private Sector</fullName>
+                <default>false</default>
+                <label>Private Sector</label>
+            </value>
+            <value>
+                <fullName>טרם נקבע</fullName>
+                <default>false</default>
+                <isActive>false</isActive>
+                <label>טרם נקבע</label>
+            </value>
+        </valueSetDefinition>
+    </valueSet>
+</CustomField>

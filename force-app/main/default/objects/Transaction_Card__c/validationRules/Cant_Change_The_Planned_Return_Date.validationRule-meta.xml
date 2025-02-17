@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ValidationRule xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Cant_Change_The_Planned_Return_Date</fullName>
+    <active>false</active>
+    <description>לא_ניתן_לעריכה_לאחר_שנמסר_מכשיר</description>
+    <errorConditionFormula>TODAY()&gt; Date_Of_Delivery_Device__c &amp;&amp; ISCHANGED( Scheduled_Return_Date__c )</errorConditionFormula>
+    <errorDisplayField>Scheduled_Return_Date__c</errorDisplayField>
+    <errorMessage>לא ניתן לשנות את תאריך החזרה המתוכנן לאחר שנמסר המכשיר</errorMessage>
+</ValidationRule>

@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>payment_calculator__c</fullName>
+    <formula>IF(
+    CreditAmount__c &gt; 140,
+    IF(
+        Days_Of_Service_Up_To_Date__c &lt; 181,
+        ((Days_Of_Service_Up_To_Date__c - actual_days_of_service__c) * Step_Price1__c * (1 - discount__c) * USD_to_ILS__c),
+        IF(
+            actual_days_of_service__c &lt; 181,
+            (((181 - actual_days_of_service__c) * Step_Price1__c) + ((Days_Of_Service_Up_To_Date__c - 181) * Step_Price2__c)) * USD_to_ILS__c * (1 - discount__c),
+            (Days_Of_Service_Up_To_Date__c - actual_days_of_service__c) * Step_Price2__c * (1 - discount__c) * USD_to_ILS__c
+        )
+    ),
+    0
+)</formula>
+    <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+    <label>חישוב זיכוי</label>
+    <precision>18</precision>
+    <required>false</required>
+    <scale>2</scale>
+    <trackHistory>false</trackHistory>
+    <trackTrending>false</trackTrending>
+    <type>Currency</type>
+</CustomField>

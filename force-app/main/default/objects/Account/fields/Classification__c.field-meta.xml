@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Classification__c</fullName>
+    <label>סיווג</label>
+    <required>false</required>
+    <trackFeedHistory>false</trackFeedHistory>
+    <type>Picklist</type>
+    <valueSet>
+        <restricted>true</restricted>
+        <valueSetDefinition>
+            <sorted>false</sorted>
+            <value>
+                <fullName>לקוח</fullName>
+                <default>false</default>
+                <label>לקוח</label>
+            </value>
+            <value>
+                <fullName>ספק</fullName>
+                <default>false</default>
+                <label>לקוח עסקי</label>
+            </value>
+        </valueSetDefinition>
+    </valueSet>
+</CustomField>

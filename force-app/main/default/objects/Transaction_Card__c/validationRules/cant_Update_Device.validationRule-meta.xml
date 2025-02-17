@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ValidationRule xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>cant_Update_Device</fullName>
+    <active>false</active>
+    <errorConditionFormula>AND(  NOT( ISBLANK( Card_Device__c )), 
+    AND(
+        NOT(ISPICKVAL(Card_Device__r.Inventory__c, &quot;הוחזר&quot; )),
+        NOT(ISPICKVAL(Card_Device__r.Inventory__c, &quot;במשרד&quot;))  ),
+ NOT(ISPICKVAL(Card_Device__r.status__c  ,&quot;תקין&quot;)))</errorConditionFormula>
+    <errorMessage>כדי לבחור במכשיר חובה שהמצב יהיה תקין וגם המלאי יהיה הוחזר או במשרד</errorMessage>
+</ValidationRule>

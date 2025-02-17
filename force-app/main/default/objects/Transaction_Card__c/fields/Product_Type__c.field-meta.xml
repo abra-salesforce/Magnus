@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Product_Type__c</fullName>
+    <description>updates product type according to product ID</description>
+    <externalId>false</externalId>
+    <formula>If  (Product_ID__c  = &quot;5265&quot; , &quot;Personal Membership&quot; , If (Product_ID__c = &quot;5312&quot; , &quot;Family Membership&quot; , If (Product_ID__c = &quot;5693&quot; , &quot;Extend Personal Membership&quot; , If (Product_ID__c = &quot;5720&quot; , &quot;Extend Family Membership&quot; , &quot;False Product ID&quot;))))</formula>
+    <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+    <label>Product Type</label>
+    <required>false</required>
+    <trackHistory>false</trackHistory>
+    <trackTrending>false</trackTrending>
+    <type>Text</type>
+    <unique>false</unique>
+</CustomField>

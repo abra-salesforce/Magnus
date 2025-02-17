@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<WebLink xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>TIMBASURVEYS__Send_Survey_Lead_Detail</fullName>
+    <availability>online</availability>
+    <displayType>button</displayType>
+    <linkType>javascript</linkType>
+    <masterLabel>Send Survey Lead Detail</masterLabel>
+    <openType>onClickJavaScript</openType>
+    <protected>false</protected>
+    <url>var email_field = &apos;{!JSENCODE(Lead.Email)}&apos;; 
+if(!email_field){
+alert(&apos;The email address for this Lead has not yet been set.&apos;); 
+}else{ 
+window.location = &quot;/apex/timbasurveys__collectionhub?lIds={!URLENCODE(Lead.Id)}&amp;retURL=&quot; + encodeURIComponent(window.location);
+}</url>
+</WebLink>

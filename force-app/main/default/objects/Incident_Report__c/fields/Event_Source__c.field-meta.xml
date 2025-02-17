@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Event_Source__c</fullName>
+    <label>Event Source</label>
+    <required>false</required>
+    <trackFeedHistory>false</trackFeedHistory>
+    <trackHistory>false</trackHistory>
+    <trackTrending>false</trackTrending>
+    <type>Picklist</type>
+    <valueSet>
+        <restricted>true</restricted>
+        <valueSetDefinition>
+            <sorted>false</sorted>
+            <value>
+                <fullName>SOS</fullName>
+                <default>false</default>
+                <label>SOS</label>
+            </value>
+            <value>
+                <fullName>The Applicant</fullName>
+                <default>false</default>
+                <label>The Applicant</label>
+            </value>
+            <value>
+                <fullName>A Friend</fullName>
+                <default>false</default>
+                <label>A Friend</label>
+            </value>
+            <value>
+                <fullName>Insurance Company</fullName>
+                <default>false</default>
+                <label>Insurance Company</label>
+            </value>
+            <value>
+                <fullName>Private Sector</fullName>
+                <default>false</default>
+                <label>Private Sector</label>
+            </value>
+            <value>
+                <fullName>Family of Satellite Customer</fullName>
+                <default>false</default>
+                <label>Family of Satellite Customer</label>
+            </value>
+            <value>
+                <fullName>Family of Insured Customer</fullName>
+                <default>false</default>
+                <label>Family of Insured Customer</label>
+            </value>
+            <value>
+                <fullName>MAGNUS safety</fullName>
+                <default>false</default>
+                <label>MAGNUS safety</label>
+            </value>
+            <value>
+                <fullName>SPL</fullName>
+                <default>false</default>
+                <label>SPL</label>
+            </value>
+            <value>
+                <fullName>Local Contact</fullName>
+                <default>false</default>
+                <label>Local Contact</label>
+            </value>
+            <value>
+                <fullName>אפליקציית מגנוס</fullName>
+                <default>false</default>
+                <isActive>false</isActive>
+                <label>אפליקציית מגנוס</label>
+            </value>
+        </valueSetDefinition>
+    </valueSet>
+</CustomField>

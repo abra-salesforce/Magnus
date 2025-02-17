@@ -1,0 +1,105 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Area__c</fullName>
+    <label>אזור</label>
+    <required>false</required>
+    <trackTrending>false</trackTrending>
+    <type>Picklist</type>
+    <valueSet>
+        <restricted>true</restricted>
+        <valueSetDefinition>
+            <sorted>false</sorted>
+            <value>
+                <fullName>צפון אמריקה</fullName>
+                <default>false</default>
+                <label>צפון אמריקה</label>
+            </value>
+            <value>
+                <fullName>דרום ומרכז אמריקה</fullName>
+                <default>false</default>
+                <label>דרום ומרכז אמריקה</label>
+            </value>
+            <value>
+                <fullName>המזרח דרום ומזרח אסיה</fullName>
+                <default>false</default>
+                <label>המזרח דרום ומזרח אסיה</label>
+            </value>
+            <value>
+                <fullName>אירופה</fullName>
+                <default>false</default>
+                <label>אירופה</label>
+            </value>
+            <value>
+                <fullName>אירופה מזרח ובלקן</fullName>
+                <default>false</default>
+                <label>אירופה מזרח ובלקן</label>
+            </value>
+            <value>
+                <fullName>אפריקה</fullName>
+                <default>false</default>
+                <label>אפריקה</label>
+            </value>
+            <value>
+                <fullName>אוקייניה</fullName>
+                <default>false</default>
+                <label>אוקייניה</label>
+            </value>
+            <value>
+                <fullName>קטבים</fullName>
+                <default>false</default>
+                <label>קטבים</label>
+            </value>
+            <value>
+                <fullName>ישראל</fullName>
+                <default>false</default>
+                <label>ישראל</label>
+            </value>
+            <value>
+                <fullName>מרכז אסיה</fullName>
+                <default>false</default>
+                <label>מרכז אסיה</label>
+            </value>
+            <value>
+                <fullName>דרום מערב אסיה</fullName>
+                <default>false</default>
+                <label>דרום מערב אסיה</label>
+            </value>
+            <value>
+                <fullName>מערב אסיה</fullName>
+                <default>false</default>
+                <label>מערב אסיה</label>
+            </value>
+            <value>
+                <fullName>מרכז אמריקה</fullName>
+                <default>false</default>
+                <label>מרכז אמריקה</label>
+            </value>
+            <value>
+                <fullName>דרום אמריקה</fullName>
+                <default>false</default>
+                <label>דרום אמריקה</label>
+            </value>
+            <value>
+                <fullName>מזרח</fullName>
+                <default>false</default>
+                <label>מזרח</label>
+            </value>
+            <value>
+                <fullName>מערב אירופה</fullName>
+                <default>false</default>
+                <label>מערב אירופה</label>
+            </value>
+            <value>
+                <fullName>מזרח אירופה והבלקן</fullName>
+                <default>false</default>
+                <label>מזרח אירופה והבלקן</label>
+            </value>
+            <value>
+                <fullName>(אוקייניה (אוסטרליה / ניוזילנד</fullName>
+                <default>false</default>
+                <isActive>false</isActive>
+                <label>(אוקייניה (אוסטרליה / ניוזילנד</label>
+            </value>
+        </valueSetDefinition>
+    </valueSet>
+</CustomField>

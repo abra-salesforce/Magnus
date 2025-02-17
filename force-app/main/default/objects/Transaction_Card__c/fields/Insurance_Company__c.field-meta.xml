@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Insurance_Company__c</fullName>
+    <label>Insurance</label>
+    <required>false</required>
+    <trackHistory>false</trackHistory>
+    <trackTrending>false</trackTrending>
+    <type>Picklist</type>
+    <valueSet>
+        <valueSetDefinition>
+            <sorted>false</sorted>
+            <value>
+                <fullName>מגדל</fullName>
+                <default>false</default>
+                <label>מגדל</label>
+            </value>
+            <value>
+                <fullName>AIG</fullName>
+                <default>false</default>
+                <label>AIG</label>
+            </value>
+            <value>
+                <fullName>ביטוח ישיר</fullName>
+                <default>false</default>
+                <label>ביטוח ישיר</label>
+            </value>
+            <value>
+                <fullName>פספורטכארד</fullName>
+                <default>false</default>
+                <label>פספורטכארד</label>
+            </value>
+            <value>
+                <fullName>הפניקס</fullName>
+                <default>false</default>
+                <label>הפניקס</label>
+            </value>
+            <value>
+                <fullName>הראל</fullName>
+                <default>false</default>
+                <label>הראל</label>
+            </value>
+            <value>
+                <fullName>כלל</fullName>
+                <default>false</default>
+                <label>כלל</label>
+            </value>
+            <value>
+                <fullName>טרם נקבע</fullName>
+                <default>false</default>
+                <label>טרם נקבע</label>
+            </value>
+            <value>
+                <fullName>שירביט</fullName>
+                <default>false</default>
+                <label>שירביט</label>
+            </value>
+            <value>
+                <fullName>מנורה</fullName>
+                <default>false</default>
+                <label>מנורה</label>
+            </value>
+            <value>
+                <fullName>הכשרה</fullName>
+                <default>false</default>
+                <label>הכשרה</label>
+            </value>
+            <value>
+                <fullName>ביטוח חקלאי</fullName>
+                <default>false</default>
+                <label>ביטוח חקלאי</label>
+            </value>
+        </valueSetDefinition>
+    </valueSet>
+</CustomField>

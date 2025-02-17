@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ListView xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>The_End</fullName>
+    <columns>NAME</columns>
+    <columns>The_Actual_Return_Date__c</columns>
+    <columns>Date_Of_Delivery_Device__c</columns>
+    <columns>Account_Passenger__c</columns>
+    <columns>Account_Addressing__c</columns>
+    <columns>Status__c</columns>
+    <columns>IMEI__c</columns>
+    <columns>All_Notes__c</columns>
+    <filterScope>Everything</filterScope>
+    <filters>
+        <field>Status__c</field>
+        <operation>equals</operation>
+        <value>הסתיים</value>
+    </filters>
+    <label>הסתיים</label>
+</ListView>

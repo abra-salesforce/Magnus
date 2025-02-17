@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Cupon_Code__c</fullName>
+    <description>This field is populated by SAT and will be providing the Discount + Affiliate from the Customer Settings &apos;&apos;.
+Or it will be mapped manually by the user to calculate the discount agreed with the Affiliate per promotion.</description>
+    <externalId>false</externalId>
+    <label>קוד קופון</label>
+    <length>255</length>
+    <required>false</required>
+    <trackHistory>true</trackHistory>
+    <trackTrending>false</trackTrending>
+    <type>Text</type>
+    <unique>false</unique>
+</CustomField>

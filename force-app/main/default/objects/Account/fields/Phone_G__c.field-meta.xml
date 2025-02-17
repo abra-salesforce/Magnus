@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Phone_G__c</fullName>
+    <externalId>false</externalId>
+    <formula>IF( BEGINS(Phone, &quot;0&quot;) , 
+
+&quot;+972&quot; + Right( 
+SUBSTITUTE(Phone, &quot;-&quot; , &quot;&quot;) , LEN( 
+SUBSTITUTE(Phone, &quot;-&quot; , &quot;&quot;) ) - 1 ) , &quot;+972&quot; + 
+SUBSTITUTE(Phone, &quot;-&quot; , &quot;&quot;) )</formula>
+    <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+    <label>Phone G</label>
+    <required>false</required>
+    <type>Text</type>
+    <unique>false</unique>
+</CustomField>

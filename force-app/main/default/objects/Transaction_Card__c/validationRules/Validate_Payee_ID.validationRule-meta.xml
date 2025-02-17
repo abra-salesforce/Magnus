@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ValidationRule xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Validate_Payee_ID</fullName>
+    <active>true</active>
+    <description>ולידציה על שדה ת.ז - רק ספרות, אורך 9</description>
+    <errorConditionFormula>AND( 
+LEN(Payee_id__c)&gt;0, 
+OR( 
+LEN(Payee_id__c)&lt;&gt;9, 
+NOT(ISNUMBER(Payee_id__c)) 
+))</errorConditionFormula>
+    <errorDisplayField>Payee_id__c</errorDisplayField>
+    <errorMessage>מספר ת.ז שהוקלד אינו תקין - אנא הזינו מספר באורך 9 ספרות המכיל ספרות בלבד.</errorMessage>
+</ValidationRule>

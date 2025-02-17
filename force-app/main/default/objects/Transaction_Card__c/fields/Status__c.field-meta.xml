@@ -1,0 +1,166 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Status__c</fullName>
+    <label>סטטוס</label>
+    <required>false</required>
+    <trackHistory>true</trackHistory>
+    <trackTrending>false</trackTrending>
+    <type>Picklist</type>
+    <valueSet>
+        <restricted>true</restricted>
+        <valueSetDefinition>
+            <sorted>false</sorted>
+            <value>
+                <fullName>חדש</fullName>
+                <default>true</default>
+                <label>חדש</label>
+            </value>
+            <value>
+                <fullName>מילוי טופס</fullName>
+                <default>false</default>
+                <label>מילוי טופס</label>
+            </value>
+            <value>
+                <fullName>דרוש עידוד</fullName>
+                <default>false</default>
+                <label>דרוש עידוד</label>
+            </value>
+            <value>
+                <fullName>מחכה לאישור טופס</fullName>
+                <default>false</default>
+                <label>מחכה לאישור טופס</label>
+            </value>
+            <value>
+                <fullName>טופס מאושר</fullName>
+                <default>false</default>
+                <label>טופס מאושר</label>
+            </value>
+            <value>
+                <fullName>הועבר תשלום</fullName>
+                <default>false</default>
+                <label>הועבר תשלום</label>
+            </value>
+            <value>
+                <fullName>הכנת מכשיר</fullName>
+                <default>false</default>
+                <label>הכנת מכשיר</label>
+            </value>
+            <value>
+                <fullName>מכשיר מוכן</fullName>
+                <default>false</default>
+                <label>מכשיר מוכן</label>
+            </value>
+            <value>
+                <fullName>מסירת מכשיר</fullName>
+                <default>false</default>
+                <label>מסירת מכשיר</label>
+            </value>
+            <value>
+                <fullName>טיול</fullName>
+                <default>false</default>
+                <label>טיול</label>
+            </value>
+            <value>
+                <fullName>בטיול - נפאל</fullName>
+                <default>false</default>
+                <label>בטיול - נפאל</label>
+            </value>
+            <value>
+                <fullName>הארכת טיול</fullName>
+                <default>false</default>
+                <label>הארכת טיול</label>
+            </value>
+            <value>
+                <fullName>החזרת מכשיר</fullName>
+                <default>false</default>
+                <label>החזרת מכשיר</label>
+            </value>
+            <value>
+                <fullName>הסתיים</fullName>
+                <default>false</default>
+                <label>הסתיים</label>
+            </value>
+            <value>
+                <fullName>לא מעוניין</fullName>
+                <default>false</default>
+                <label>לא מעוניין</label>
+            </value>
+            <value>
+                <fullName>הארכת שירות</fullName>
+                <default>false</default>
+                <label>הארכת שירות</label>
+            </value>
+            <value>
+                <fullName>צריך לזכות</fullName>
+                <default>false</default>
+                <label>צריך לזכות</label>
+            </value>
+            <value>
+                <fullName>חיובים בעייתיים</fullName>
+                <default>false</default>
+                <label>חיובים בעייתיים</label>
+            </value>
+            <value>
+                <fullName>ייעוץ משפחה</fullName>
+                <default>false</default>
+                <label>ייעוץ משפחה</label>
+            </value>
+            <value>
+                <fullName>בהמתנה למכשיר</fullName>
+                <default>false</default>
+                <label>בהמתנה למכשיר</label>
+            </value>
+            <value>
+                <fullName>לא במלאי</fullName>
+                <default>false</default>
+                <label>לא במלאי</label>
+            </value>
+            <value>
+                <fullName>החזרה באיחור</fullName>
+                <default>false</default>
+                <label>החזרה באיחור</label>
+            </value>
+            <value>
+                <fullName>ממתין לאיסוף בנתב&quot;ג</fullName>
+                <default>false</default>
+                <label>ממתין לאיסוף בנתב&quot;ג</label>
+            </value>
+            <value>
+                <fullName>החזרה מנתב&quot;ג</fullName>
+                <default>false</default>
+                <label>החזרה מנתב&quot;ג</label>
+            </value>
+            <value>
+                <fullName>לגבות תשלום נתב&quot;ג</fullName>
+                <default>false</default>
+                <label>לגבות תשלום נתב&quot;ג</label>
+            </value>
+            <value>
+                <fullName>מכשיר נשלח לנתב&quot;ג</fullName>
+                <default>false</default>
+                <label>מכשיר נשלח לנתב&quot;ג</label>
+            </value>
+            <value>
+                <fullName>בהקפאה - זיכוי</fullName>
+                <default>false</default>
+                <label>בהקפאה - זיכוי</label>
+            </value>
+            <value>
+                <fullName>הוזמן משלוח להחזרה HFD</fullName>
+                <default>false</default>
+                <label>הוזמן משלוח להחזרה HFD</label>
+            </value>
+            <value>
+                <fullName>בוטל</fullName>
+                <default>false</default>
+                <label>בוטל</label>
+            </value>
+            <value>
+                <fullName>None</fullName>
+                <default>false</default>
+                <isActive>false</isActive>
+                <label>None</label>
+            </value>
+        </valueSetDefinition>
+    </valueSet>
+</CustomField>

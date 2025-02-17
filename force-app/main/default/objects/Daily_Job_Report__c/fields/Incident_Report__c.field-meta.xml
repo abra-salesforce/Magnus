@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Incident_Report__c</fullName>
+    <deleteConstraint>SetNull</deleteConstraint>
+    <label>כרטיס אירוע</label>
+    <referenceTo>Incident_Report__c</referenceTo>
+    <relationshipLabel>דו&quot;ח עבודה יומי</relationshipLabel>
+    <relationshipName>Daily_Job_Report</relationshipName>
+    <required>false</required>
+    <trackTrending>false</trackTrending>
+    <type>Lookup</type>
+</CustomField>

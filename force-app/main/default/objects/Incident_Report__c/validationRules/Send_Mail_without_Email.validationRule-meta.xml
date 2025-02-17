@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ValidationRule xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Send_Mail_without_Email</fullName>
+    <active>true</active>
+    <errorConditionFormula>SendForm__c = true &amp;&amp;   ISBLANK(Acc_Addressing_Email__c)</errorConditionFormula>
+    <errorMessage>Email is required.</errorMessage>
+</ValidationRule>

@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ListView xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>View2</fullName>
+    <columns>Account_Passenger__c</columns>
+    <columns>NAME</columns>
+    <columns>CREATED_DATE</columns>
+    <columns>Date_Trip__c</columns>
+    <columns>All_Notes__c</columns>
+    <filterScope>Everything</filterScope>
+    <filters>
+        <field>Status__c</field>
+        <operation>equals</operation>
+        <value>בהמתנה למכשיר</value>
+    </filters>
+    <label>בהמתנה למכשיר</label>
+    <language>iw</language>
+</ListView>

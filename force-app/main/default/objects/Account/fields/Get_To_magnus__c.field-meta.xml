@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Get_To_magnus__c</fullName>
+    <label>איך הגעתי למגנוס</label>
+    <required>false</required>
+    <trackFeedHistory>false</trackFeedHistory>
+    <type>Picklist</type>
+    <valueSet>
+        <valueSetDefinition>
+            <sorted>false</sorted>
+            <value>
+                <fullName>שמעתי מחבר</fullName>
+                <default>false</default>
+                <label>שמעתי מחבר</label>
+            </value>
+            <value>
+                <fullName>מצאתי באינטרנט</fullName>
+                <default>false</default>
+                <label>מצאתי באינטרנט</label>
+            </value>
+            <value>
+                <fullName>ראיתי בפייסבוק</fullName>
+                <default>false</default>
+                <label>ראיתי בפייסבוק</label>
+            </value>
+            <value>
+                <fullName>קראתי בעיתון</fullName>
+                <default>false</default>
+                <label>קראתי בעיתון</label>
+            </value>
+            <value>
+                <fullName>ראיתי בטלויזיה</fullName>
+                <default>false</default>
+                <label>ראיתי בטלויזיה</label>
+            </value>
+            <value>
+                <fullName>שמעתי ברדיו</fullName>
+                <default>false</default>
+                <label>שמעתי ברדיו</label>
+            </value>
+        </valueSetDefinition>
+    </valueSet>
+</CustomField>

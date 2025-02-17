@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ListView xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Suppliers</fullName>
+    <columns>ACCOUNT.NAME</columns>
+    <columns>ACCOUNT.PHONE1</columns>
+    <columns>Classification__c</columns>
+    <columns>Travel_Card__c</columns>
+    <columns>Card_Addressing__c</columns>
+    <columns>Passenger_Mail__c</columns>
+    <filterScope>Everything</filterScope>
+    <filters>
+        <field>Classification__c</field>
+        <operation>equals</operation>
+        <value>ספק</value>
+    </filters>
+    <label>ספקים</label>
+    <language>en_US</language>
+</ListView>

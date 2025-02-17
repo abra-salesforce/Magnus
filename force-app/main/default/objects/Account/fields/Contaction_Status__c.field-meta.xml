@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Contaction_Status__c</fullName>
+    <label>קשר פונה נוסע</label>
+    <required>false</required>
+    <trackFeedHistory>false</trackFeedHistory>
+    <type>Picklist</type>
+    <valueSet>
+        <valueSetDefinition>
+            <sorted>false</sorted>
+            <value>
+                <fullName>הפונה הוא הנוסע</fullName>
+                <default>false</default>
+                <label>הפונה הוא הנוסע</label>
+            </value>
+            <value>
+                <fullName>אמא/אבא</fullName>
+                <default>false</default>
+                <label>אמא/אבא</label>
+            </value>
+            <value>
+                <fullName>אחות/אח</fullName>
+                <default>false</default>
+                <label>אחות/אח</label>
+            </value>
+            <value>
+                <fullName>בת/בן זוג</fullName>
+                <default>false</default>
+                <label>בת/בן זוג</label>
+            </value>
+            <value>
+                <fullName>חבר/ה</fullName>
+                <default>false</default>
+                <label>חבר/ה</label>
+            </value>
+            <value>
+                <fullName>אחר</fullName>
+                <default>false</default>
+                <label>אחר</label>
+            </value>
+        </valueSetDefinition>
+    </valueSet>
+</CustomField>

@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ListView xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>pending_form_completion</fullName>
+    <columns>NAME</columns>
+    <columns>Account_Passenger__c</columns>
+    <columns>Date_Trip__c</columns>
+    <columns>Status__c</columns>
+    <columns>All_Notes__c</columns>
+    <columns>Trainings__c</columns>
+    <filterScope>Everything</filterScope>
+    <filters>
+        <field>Status__c</field>
+        <operation>equals</operation>
+        <value>מילוי טופס</value>
+    </filters>
+    <label>מילוי טופס</label>
+    <language>en_US</language>
+</ListView>

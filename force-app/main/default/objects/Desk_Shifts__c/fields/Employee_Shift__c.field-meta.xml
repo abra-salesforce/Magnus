@@ -1,0 +1,137 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Employee_Shift__c</fullName>
+    <label>כונן במשמרת</label>
+    <required>true</required>
+    <trackHistory>false</trackHistory>
+    <trackTrending>false</trackTrending>
+    <type>Picklist</type>
+    <valueSet>
+        <restricted>true</restricted>
+        <valueSetDefinition>
+            <sorted>true</sorted>
+            <value>
+                <fullName>אור</fullName>
+                <default>false</default>
+                <label>אור</label>
+            </value>
+            <value>
+                <fullName>אלכס בורלקה</fullName>
+                <default>false</default>
+                <label>אלכס בורלקה</label>
+            </value>
+            <value>
+                <fullName>אנסטסיה</fullName>
+                <default>false</default>
+                <label>אנסטסיה</label>
+            </value>
+            <value>
+                <fullName>גדעון</fullName>
+                <default>false</default>
+                <label>גדעון</label>
+            </value>
+            <value>
+                <fullName>גיא</fullName>
+                <default>false</default>
+                <label>גיא</label>
+            </value>
+            <value>
+                <fullName>גיא רוטליג&apos;</fullName>
+                <default>false</default>
+                <label>גיא רוטליג&apos;</label>
+            </value>
+            <value>
+                <fullName>דן דיפורטו</fullName>
+                <default>false</default>
+                <label>דן דיפורטו</label>
+            </value>
+            <value>
+                <fullName>חן ביתן</fullName>
+                <default>false</default>
+                <label>חן ביתן</label>
+            </value>
+            <value>
+                <fullName>יואב מגנוס</fullName>
+                <default>false</default>
+                <label>יואב מגנוס</label>
+            </value>
+            <value>
+                <fullName>ים</fullName>
+                <default>false</default>
+                <isActive>false</isActive>
+                <label>ים</label>
+            </value>
+            <value>
+                <fullName>יסמין</fullName>
+                <default>false</default>
+                <label>יסמין</label>
+            </value>
+            <value>
+                <fullName>נוי חיקין</fullName>
+                <default>false</default>
+                <label>נוי חיקין</label>
+            </value>
+            <value>
+                <fullName>נועה</fullName>
+                <default>false</default>
+                <label>נועה</label>
+            </value>
+            <value>
+                <fullName>נועם פז</fullName>
+                <default>false</default>
+                <label>נועם פז</label>
+            </value>
+            <value>
+                <fullName>ניצן בן סימון</fullName>
+                <default>false</default>
+                <label>ניצן בן סימון</label>
+            </value>
+            <value>
+                <fullName>ספיר</fullName>
+                <default>false</default>
+                <label>ספיר</label>
+            </value>
+            <value>
+                <fullName>סתיו</fullName>
+                <default>false</default>
+                <label>סתיו</label>
+            </value>
+            <value>
+                <fullName>עמית</fullName>
+                <default>false</default>
+                <label>עמית</label>
+            </value>
+            <value>
+                <fullName>ענבל</fullName>
+                <default>false</default>
+                <label>ענבל</label>
+            </value>
+            <value>
+                <fullName>קווין</fullName>
+                <default>false</default>
+                <label>קווין</label>
+            </value>
+            <value>
+                <fullName>רון</fullName>
+                <default>false</default>
+                <label>רון</label>
+            </value>
+            <value>
+                <fullName>רון לביא</fullName>
+                <default>false</default>
+                <label>רון לביא</label>
+            </value>
+            <value>
+                <fullName>רוני</fullName>
+                <default>false</default>
+                <label>רוני</label>
+            </value>
+            <value>
+                <fullName>תום</fullName>
+                <default>false</default>
+                <isActive>false</isActive>
+                <label>תום</label>
+            </value>
+        </valueSetDefinition>
+    </valueSet>
+</CustomField>

@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Vat__c</fullName>
+    <label>סה&quot;כ מע&quot;מ</label>
+    <summarizedField>Payment_Transaction_line__c.Vat__c</summarizedField>
+    <summaryForeignKey>Payment_Transaction_line__c.Payment_Transaction__c</summaryForeignKey>
+    <summaryOperation>sum</summaryOperation>
+    <trackTrending>false</trackTrending>
+    <type>Summary</type>
+</CustomField>

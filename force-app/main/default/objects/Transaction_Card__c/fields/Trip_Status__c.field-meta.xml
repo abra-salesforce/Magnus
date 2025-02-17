@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Trip_Status__c</fullName>
+    <label>סטטוס טיול</label>
+    <required>false</required>
+    <trackHistory>false</trackHistory>
+    <trackTrending>false</trackTrending>
+    <type>Picklist</type>
+    <valueSet>
+        <controllingField>Status__c</controllingField>
+        <restricted>true</restricted>
+        <valueSetDefinition>
+            <sorted>false</sorted>
+            <value>
+                <fullName>פנייה טכנית</fullName>
+                <default>false</default>
+                <label>פנייה טכנית</label>
+            </value>
+            <value>
+                <fullName>תזכורת בייטים</fullName>
+                <default>false</default>
+                <label>תזכורת בייטים</label>
+            </value>
+            <value>
+                <fullName>תשלום בייטים</fullName>
+                <default>false</default>
+                <label>תשלום בייטים</label>
+            </value>
+        </valueSetDefinition>
+        <valueSettings>
+            <controllingFieldValue>טיול</controllingFieldValue>
+            <valueName>פנייה טכנית</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>טיול</controllingFieldValue>
+            <valueName>תזכורת בייטים</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>טיול</controllingFieldValue>
+            <valueName>תשלום בייטים</valueName>
+        </valueSettings>
+    </valueSet>
+</CustomField>

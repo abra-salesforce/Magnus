@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<WebLink xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Filling_Form</fullName>
+    <availability>online</availability>
+    <displayType>button</displayType>
+    <linkType>javascript</linkType>
+    <masterLabel>שלח טופס ללקוח</masterLabel>
+    <openType>onClickJavaScript</openType>
+    <protected>false</protected>
+    <url>{!REQUIRESCRIPT(&quot;/soap/ajax/20.0/connection.js&quot;)} 
+{!REQUIRESCRIPT(&quot;/soap/ajax/20.0/apex.js&quot;)} 
+
+var email = &apos;{!Transaction_Card__c.Email_Forms__c}&apos;; 
+var email2 = &apos;{!Transaction_Card__c.Email_Forms2__c}&apos;;
+
+if (email === &apos;&apos; &amp;&amp; email2 === &apos;&apos;) { 
+    alert(&quot;לא ניתן לשלוח מייל ללקוח מפני שלא הוזנה כתובת דואר אלקטרוני&quot;);
+ }
+else
+{
+if (&apos;{!Transaction_Card__c.Send_For_Approval_Date__c}&apos; === &apos;&apos;) {
+var obj = new sforce.SObject(&quot;Transaction_Card__c&quot;); 
+obj.Id= &quot;{!Transaction_Card__c.Id}&quot;; 
+obj.Send_For_Approval_Date__c =  new Date(); 
+var result = sforce.connection.update([obj]); 
+}
+
+window.location.replace(&apos;/flow/FillingForm?CardID={!Transaction_Card__c.Id}&amp;retURL={!Transaction_Card__c.Id}&apos;);
+}</url>
+</WebLink>
