@@ -75,7 +75,7 @@ public without sharing class ChargeOrRefundController {
             }
             if(pam.Parent_Transaction__c!=null)
             {
-            tcc=[select id,Token_Id__c,CC_Expiration_Date__c,No_of_Payments__c,Account_Addressing__c,discount__c,Return_Date_Updated__c,Cost_Calculated_Planned_N__c,Trainings__c,Date_Of_Delivery_Device__c,Scheduled_Return_Date__c,Days_Of_Planned_Service__c,Step_Size1__c,Step_Size2__c,Step_Size3__c,Step_Size4__c,Step_Price1__c,Step_Price2__c,Step_Price3__c,Step_Price4__c,Dollar_Exchange_Rate__c,Manual_Transaction__c from Transaction_Card__c where id=:pam.Parent_Transaction__c];
+            tcc=[select id,Device__c, Token_Id__c,CC_Expiration_Date__c,No_of_Payments__c,Account_Addressing__c,discount__c,Return_Date_Updated__c,Cost_Calculated_Planned_N__c,Trainings__c,Date_Of_Delivery_Device__c,Scheduled_Return_Date__c,Days_Of_Planned_Service__c,Step_Size1__c,Step_Size2__c,Step_Size3__c,Step_Size4__c,Step_Price1__c,Step_Price2__c,Step_Price3__c,Step_Price4__c,Dollar_Exchange_Rate__c,Manual_Transaction__c from Transaction_Card__c where id=:pam.Parent_Transaction__c];
             accadd=[select id,Name,PersonEmail,PersonMobilePhone from account where id=:tcc.Account_Addressing__c];
             }
         }
