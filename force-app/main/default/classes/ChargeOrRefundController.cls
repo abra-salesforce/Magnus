@@ -16,6 +16,8 @@ public without sharing class ChargeOrRefundController {
     Public decimal Price {get;set;}
     Public Boolean clo {get;set;}
     Public Boolean err {get;set;}
+    public String vatRate { get; set; }
+
     public ChargeOrRefundController()
     {
       products='';
@@ -119,8 +121,8 @@ public without sharing class ChargeOrRefundController {
                  req1.setendpoint('https://secure5.tranzila.com/cgi-bin/tranzila71u.cgi');
                  req1.setmethod('POST');
                  String cur=ptc.CurrencyIsoCode=='USD'?'2':'1';
-                 Decimal vat = Decimal.valueOf(System.Label.Vat)/100;
-                 string pos='supplier=magnusintetok&sum='+ptc.Grand_Total__c.setScale(2)+'&expdate='+tcc.CC_Expiration_Date__c+'&currency='+cur+'&TranzilaPW=zJkelm&TranzilaTK='+tcc.Token_id__c+'&cred_type=1&tranmode=A&SF_Transaction_Id='+tcc.id+'&contact='+accadd.name+'&email='+accadd.PersonEmail+'&phone='+accadd.PersonMobilePhone+'&IMaam='+vat+'&json_purchase_data='+products;
+                 vatRate = String.valueOf(Decimal.valueOf(System.Label.Vat) / 100);
+                 string pos='supplier=magnusintetok&sum='+ptc.Grand_Total__c.setScale(2)+'&expdate='+tcc.CC_Expiration_Date__c+'&currency='+cur+'&TranzilaPW=zJkelm&TranzilaTK='+tcc.Token_id__c+'&cred_type=1&tranmode=A&SF_Transaction_Id='+tcc.id+'&contact='+accadd.name+'&email='+accadd.PersonEmail+'&phone='+accadd.PersonMobilePhone+'&IMaam='+vatRate+'&json_purchase_data='+products;
                  req1.setbody(pos);
                  HttpResponse res1;
                  String str='';
