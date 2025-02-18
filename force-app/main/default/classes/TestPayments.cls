@@ -51,7 +51,7 @@ public without sharing class TestPayments {
             insert accpas;
             Trainings__c tra=new Trainings__c(Date_Time__c=System.now());
             insert tra;
-            Transaction_Card__c tcc =new Transaction_Card__c(Token_id__c='testspec',Account_Addressing__c=acchi.id,Account_Passenger__c=accpas.id,Trainings__c=tra.id,Scheduled_Return_Date__c=system.today(),Date_Of_Delivery_Device__c=system.today());
+            Transaction_Card__c tcc =new Transaction_Card__c(Device__c='SE+ - מטיילים בארץ',Token_id__c='testspec',Account_Addressing__c=acchi.id,Account_Passenger__c=accpas.id,Trainings__c=tra.id,Scheduled_Return_Date__c=system.today(),Date_Of_Delivery_Device__c=system.today());
             insert tcc;
             Payment_Transaction__c ptc=new Payment_Transaction__c(Transaction_Card__c=tcc.id);
             insert ptc;
