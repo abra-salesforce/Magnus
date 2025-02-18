@@ -57,7 +57,6 @@ public without sharing class PriceRetController {
     public Decimal refundNatPick{get;set;}
     public String selectedPlan{get;set;}
     public list<SelectOption> Plans {get; set;}
-    public String vatRate { get; set; }
     private map<string,map<decimal,decimal>> prices;
     public Map<String, Boolean> errMsgs { get; set; }
     private void resetErrMsgs() {
@@ -650,13 +649,7 @@ public without sharing class PriceRetController {
                  HttpRequest req1=new HttpRequest();
                  req1.setendpoint('https://secure5.tranzila.com/cgi-bin/tranzila71u.cgi');
                  req1.setmethod('POST');
-
-                 if (tcc.Device__c != null && String.valueOf(tcc.Device__c).contains('מטיילים בחו"ל')) {
-                    vatRate = '0';
-                 }else{
-                    vatRate = String.valueOf(Decimal.valueOf(System.Label.Vat) / 100);
-                 }
-                 req1.setbody('supplier=magnusintetok&sum='+price+'&expdate='+tcc.CC_Expiration_Date__c+'&currency='+(tcc.CurrencyIsoCode=='USD'?'2':'1')+'&TranzilaPW=zJkelm&TranzilaTK='+tcc.Token_Id__c+'&cred_type=1&tranmode=A&SF_Transaction_Id='+curid+'&contact='+accadd.name+'&email='+accadd.PersonEmail+'&phone='+accadd.PersonMobilePhone+'&IMaam='+vatRate);
+                 req1.setbody('supplier=magnusintetok&sum='+price+'&expdate='+tcc.CC_Expiration_Date__c+'&currency='+(tcc.CurrencyIsoCode=='USD'?'2':'1')+'&TranzilaPW=zJkelm&TranzilaTK='+tcc.Token_Id__c+'&cred_type=1&tranmode=A&SF_Transaction_Id='+curid+'&contact='+accadd.name+'&email='+accadd.PersonEmail+'&phone='+accadd.PersonMobilePhone+'&IMaam=0');
                  HttpResponse res1;
                  String str='';
                          if(tcc.Token_Id__c!='testspec')
