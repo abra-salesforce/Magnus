@@ -509,7 +509,7 @@ input[type="date"]::-webkit-inner-spin-button { display: none; }
                             <input type="hidden" name="tranmode" value="AK"/>
                             <input type="hidden" name="cred_type" value="8"/>
                             <input type="hidden" name="maxpay" value="{!nump}"/>
-                            <input type="hidden" name="IMaam" value="0"/>
+                            <input type="hidden" name="IMaam" value="{!vatRate}"/>
                             <input id="submitzilla" type="submit" value=" Send " style="display: none;"/>
                         </form>
                     </apex:outputpanel>
