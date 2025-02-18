@@ -27,7 +27,7 @@ public without sharing class ChargeOrRefundController {
         TokEx=false;
         met=true;
         CurId = ApexPages.currentPage().getParameters().get('id');
-        list <Payment_Transaction__c> ptcl=[select id,name,CurrencyIsoCode,Type__c,Transaction_Card__c,Payment_Method__c,Status__c,Payment__c,Grand_Total__c from Payment_Transaction__c where id=:Curid];
+        list <Payment_Transaction__c> ptcl=[select id,name,CurrencyIsoCode,Type__c,Transaction_Card__c,Payment_Method__c,Status__c,Payment__c,Grand_Total__c,Price_Without_VAT__c from Payment_Transaction__c where id=:Curid];
         list <Payment__c> paml=[select id,name,CurrencyIsoCode,masof__c,Extended_Service__c,Parent_Transaction__c,Expiration_Date__c,Payment_Transaction__c,Token__c,VAT_payment__c,Result__c,Sum__c,index__c,Payment_Transaction_ID__c from Payment__c where id=:Curid];
         if(ptcl.size()>0)
         {
@@ -120,14 +120,16 @@ public without sharing class ChargeOrRefundController {
                  HttpRequest req1=new HttpRequest();
                  req1.setendpoint('https://secure5.tranzila.com/cgi-bin/tranzila71u.cgi');
                  req1.setmethod('POST');
+                 Decimal priceToTranzila;
                  String cur=ptc.CurrencyIsoCode=='USD'?'2':'1';
                  if (tcc.Device__c != null && String.valueOf(tcc.Device__c).contains('מטיילים בחו"ל')) {
                     vatRate = '0';
+                    priceToTranzila = ptc.Price_Without_VAT__c;
                  }else{
                     vatRate = String.valueOf(Decimal.valueOf(System.Label.Vat) / 100);
-
+                    priceToTranzila = ptc.Grand_Total__c;
                  }
-                 string pos='supplier=magnusintetok&sum='+ptc.Grand_Total__c.setScale(2)+'&expdate='+tcc.CC_Expiration_Date__c+'&currency='+cur+'&TranzilaPW=zJkelm&TranzilaTK='+tcc.Token_id__c+'&cred_type=1&tranmode=A&SF_Transaction_Id='+tcc.id+'&contact='+accadd.name+'&email='+accadd.PersonEmail+'&phone='+accadd.PersonMobilePhone+'&IMaam='+vatRate+'&json_purchase_data='+products;
+                 string pos='supplier=magnusintetok&sum='+priceToTranzila.setScale(2)+'&expdate='+tcc.CC_Expiration_Date__c+'&currency='+cur+'&TranzilaPW=zJkelm&TranzilaTK='+tcc.Token_id__c+'&cred_type=1&tranmode=A&SF_Transaction_Id='+tcc.id+'&contact='+accadd.name+'&email='+accadd.PersonEmail+'&phone='+accadd.PersonMobilePhone+'&IMaam='+vatRate+'&json_purchase_data='+products;
                  req1.setbody(pos);
                  HttpResponse res1;
                  String str='';
