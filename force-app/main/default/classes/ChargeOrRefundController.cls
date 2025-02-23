@@ -33,7 +33,7 @@ public without sharing class ChargeOrRefundController {
         {
             ptc=ptcl[0];
             sfid=ptc.id;
-            tcc=[select id,Device__c, Token_Id__c,CC_Expiration_Date__c,No_of_Payments__c,Account_Addressing__c,discount__c,Return_Date_Updated__c,Cost_Calculated_Planned_N__c,Trainings__c,Date_Of_Delivery_Device__c,Scheduled_Return_Date__c,Days_Of_Planned_Service__c,Step_Size1__c,Step_Size2__c,Step_Size3__c,Step_Size4__c,Step_Price1__c,Step_Price2__c,Step_Price3__c,Step_Price4__c,Dollar_Exchange_Rate__c from Transaction_Card__c where id=:ptc.Transaction_Card__c];
+            tcc=[select id,Device__c,Need_Charge_Vat__c, Token_Id__c,CC_Expiration_Date__c,No_of_Payments__c,Account_Addressing__c,discount__c,Return_Date_Updated__c,Cost_Calculated_Planned_N__c,Trainings__c,Date_Of_Delivery_Device__c,Scheduled_Return_Date__c,Days_Of_Planned_Service__c,Step_Size1__c,Step_Size2__c,Step_Size3__c,Step_Size4__c,Step_Price1__c,Step_Price2__c,Step_Price3__c,Step_Price4__c,Dollar_Exchange_Rate__c from Transaction_Card__c where id=:ptc.Transaction_Card__c];
             accadd=[select id,Name,PersonEmail,PersonMobilePhone from account where id=:tcc.Account_Addressing__c];
             type='חיוב';
             if(tcc.Token_id__c!=null)
@@ -75,7 +75,7 @@ public without sharing class ChargeOrRefundController {
             }
             if(pam.Parent_Transaction__c!=null)
             {
-            tcc=[select id,Device__c, Token_Id__c,CC_Expiration_Date__c,No_of_Payments__c,Account_Addressing__c,discount__c,Return_Date_Updated__c,Cost_Calculated_Planned_N__c,Trainings__c,Date_Of_Delivery_Device__c,Scheduled_Return_Date__c,Days_Of_Planned_Service__c,Step_Size1__c,Step_Size2__c,Step_Size3__c,Step_Size4__c,Step_Price1__c,Step_Price2__c,Step_Price3__c,Step_Price4__c,Dollar_Exchange_Rate__c,Manual_Transaction__c from Transaction_Card__c where id=:pam.Parent_Transaction__c];
+            tcc=[select id,Device__c,Need_Charge_Vat__c, Token_Id__c,CC_Expiration_Date__c,No_of_Payments__c,Account_Addressing__c,discount__c,Return_Date_Updated__c,Cost_Calculated_Planned_N__c,Trainings__c,Date_Of_Delivery_Device__c,Scheduled_Return_Date__c,Days_Of_Planned_Service__c,Step_Size1__c,Step_Size2__c,Step_Size3__c,Step_Size4__c,Step_Price1__c,Step_Price2__c,Step_Price3__c,Step_Price4__c,Dollar_Exchange_Rate__c,Manual_Transaction__c from Transaction_Card__c where id=:pam.Parent_Transaction__c];
             accadd=[select id,Name,PersonEmail,PersonMobilePhone from account where id=:tcc.Account_Addressing__c];
             }
         }
@@ -122,7 +122,7 @@ public without sharing class ChargeOrRefundController {
                  req1.setmethod('POST');
                  Decimal priceToTranzila;
                  String cur=ptc.CurrencyIsoCode=='USD'?'2':'1';
-                 if (tcc.Device__c != null && String.valueOf(tcc.Device__c).contains('מטיילים בחו"ל')) {
+                 if (!tcc.Need_Charge_Vat__c) {
                     vatRate = '0';
                     priceToTranzila = ptc.Price_Without_VAT__c;
                  }else{
