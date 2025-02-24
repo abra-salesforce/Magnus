@@ -78,7 +78,7 @@
                     </apex:form>
                     <apex:outputpanel id="posting">
                         <form ACTION="https://direct.tranzila.com/magnusinte/" method="POST">
-                            <input type="hidden" name="sum" value="{!ROUND(ptc.Grand_Total__c,2)}"/>
+                            <input type="hidden" name="sum" value="{!priceToTranzila}"/>
                             <input type="hidden" name="contact" value="{!accadd.Name}"/>
                             <input type="hidden" name="email" value="{!accadd.PersonEmail}"/>
                             <input type="hidden" name="phone" value="{!accadd.PersonMobilePhone}"/>
