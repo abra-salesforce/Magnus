@@ -187,6 +187,7 @@ input[type="date"]::-webkit-inner-spin-button { display: none; }
                                 function check_certain_condition() {
                                     if (ret == false && pick == false) {
                                         document.getElementById('submitzilla').click();
+                                        console.log('clicking submitzilla...');
                                     }
                                 }
                             </Script>

@@ -59,6 +59,9 @@ public without sharing class PriceRetController {
     public list<SelectOption> Plans {get; set;}
     private map<string,map<decimal,decimal>> prices;
     public Map<String, Boolean> errMsgs { get; set; }
+    public Decimal priceToTranzila {get; set;}
+    public String vatRate { get; set; }
+
     private void resetErrMsgs() {
         errMsgs = new Map<String, Boolean>();
         errMsgs.put('RetDate', false);
@@ -136,6 +139,8 @@ public without sharing class PriceRetController {
             tcc.Scheduled_Return_Date__c=tcc.Return_Date_Updated__c;
             needswitch=true;
         }
+
+        
     }
     public void initialize(){
         uptcc=tcc;
@@ -642,6 +647,19 @@ public without sharing class PriceRetController {
     {
         resetErrMsgs();
         Datetime checkWeekEnd=uptcc.Return_Date_Updated__c;
+
+        System.debug('Need_Charge_Vat__c: '+tcc.Need_Charge_Vat__c);
+        if (tcc.Need_Charge_Vat__c) {
+            vatRate = String.valueOf(Decimal.valueOf(System.Label.Vat) / 100);
+            priceToTranzila = price;
+          
+        }else{
+            vatRate = '0';
+            priceToTranzila = price/1+vatRate;
+        }
+
+        System.debug('priceToTranzila: '+priceToTranzila);
+        System.debug('vatRate: '+vatRate);
             if(totdays>=tcc.Days_Of_Planned_Service__c&&((checkWeekEnd.format('E')!='Fri'&&checkWeekEnd.format('E')!='Sat')||tcc.Return_in_Natbag__c==true))
             {
                 if(uptcc.Pickup_in_Natbag__c==null||uptcc.Pickup_in_Natbag__c==false||(uptcc.Pickup_in_Natbag__c==true&&uptcc.Pickup_Time__c!=null)){
@@ -649,7 +667,7 @@ public without sharing class PriceRetController {
                  HttpRequest req1=new HttpRequest();
                  req1.setendpoint('https://secure5.tranzila.com/cgi-bin/tranzila71u.cgi');
                  req1.setmethod('POST');
-                 req1.setbody('supplier=magnusintetok&sum='+price+'&expdate='+tcc.CC_Expiration_Date__c+'&currency='+(tcc.CurrencyIsoCode=='USD'?'2':'1')+'&TranzilaPW=zJkelm&TranzilaTK='+tcc.Token_Id__c+'&cred_type=1&tranmode=A&SF_Transaction_Id='+curid+'&contact='+accadd.name+'&email='+accadd.PersonEmail+'&phone='+accadd.PersonMobilePhone+'&IMaam=0');
+                 req1.setbody('supplier=magnusintetok&sum='+priceToTranzila+'&expdate='+tcc.CC_Expiration_Date__c+'&currency='+(tcc.CurrencyIsoCode=='USD'?'2':'1')+'&TranzilaPW=zJkelm&TranzilaTK='+tcc.Token_Id__c+'&cred_type=1&tranmode=A&SF_Transaction_Id='+curid+'&contact='+accadd.name+'&email='+accadd.PersonEmail+'&phone='+accadd.PersonMobilePhone+'&IMaam='+vatRate);
                  HttpResponse res1;
                  String str='';
                          if(tcc.Token_Id__c!='testspec')
