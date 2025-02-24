@@ -655,7 +655,7 @@ public without sharing class PriceRetController {
           
         }else{
             vatRate = '0';
-            priceToTranzila = price/1+vatRate;
+            priceToTranzila = price / (1 + Decimal.valueOf(System.Label.Vat));
         }
 
         System.debug('priceToTranzila: '+priceToTranzila);
