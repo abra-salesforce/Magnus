@@ -57,6 +57,8 @@
                             if(ret==='False')
                             {
                                 document.getElementById('submitzilla').click();
+                                console.log("Clicking submitzilla...");
+
                             }
                         }
                     </script>

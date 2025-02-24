@@ -80,6 +80,17 @@ public without sharing class ChargeOrRefundController {
                 accadd=[select id,Name,PersonEmail,PersonMobilePhone from account where id=:tcc.Account_Addressing__c];
             }
         }
+
+        System.debug('Need_Charge_Vat__c: '+tcc.Need_Charge_Vat__c);
+        if (!tcc.Need_Charge_Vat__c) {
+            vatRate = '0';
+            priceToTranzila = ptc.Price_Without_VAT__c;
+        }else{
+            vatRate = String.valueOf(Decimal.valueOf(System.Label.Vat) / 100);
+            priceToTranzila = ptc.Grand_Total__c;
+        }
+        
+        System.debug('priceToTranzila: '+priceToTranzila);
         if(type=='חיוב')
             met=false;
     }
@@ -123,16 +134,7 @@ public without sharing class ChargeOrRefundController {
             req1.setendpoint('https://secure5.tranzila.com/cgi-bin/tranzila71u.cgi');
             req1.setmethod('POST');
             String cur=ptc.CurrencyIsoCode=='USD'?'2':'1';
-            System.debug('Need_Charge_Vat__c: '+tcc.Need_Charge_Vat__c);
-            if (!tcc.Need_Charge_Vat__c) {
-                vatRate = '0';
-                priceToTranzila = ptc.Price_Without_VAT__c;
-            }else{
-                vatRate = String.valueOf(Decimal.valueOf(System.Label.Vat) / 100);
-                priceToTranzila = ptc.Grand_Total__c;
-            }
-            System.debug('priceToTranzila: '+priceToTranzila);
-            
+    
             string pos='supplier=magnusintetok&sum='+priceToTranzila.setScale(2)+'&expdate='+tcc.CC_Expiration_Date__c+'&currency='+cur+'&TranzilaPW=zJkelm&TranzilaTK='+tcc.Token_id__c+'&cred_type=1&tranmode=A&SF_Transaction_Id='+tcc.id+'&contact='+accadd.name+'&email='+accadd.PersonEmail+'&phone='+accadd.PersonMobilePhone+'&IMaam='+vatRate+'&json_purchase_data='+products;
             req1.setbody(pos);
             HttpResponse res1;
