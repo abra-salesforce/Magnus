@@ -89,8 +89,9 @@ public without sharing class ChargeOrRefundController {
             vatRate = String.valueOf(Decimal.valueOf(System.Label.Vat) / 100);
             priceToTranzila = ptc.Grand_Total__c;
         }
-        
+
         System.debug('priceToTranzila: '+priceToTranzila);
+        System.debug('vatRate: '+vatRate);
         if(type=='חיוב')
             met=false;
     }
