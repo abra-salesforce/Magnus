@@ -82,12 +82,13 @@ public without sharing class ChargeOrRefundController {
         }
 
         System.debug('Need_Charge_Vat__c: '+tcc.Need_Charge_Vat__c);
-        if (!tcc.Need_Charge_Vat__c) {
-            vatRate = '0';
-            priceToTranzila = ptc.Price_Without_VAT__c;
-        }else{
+        if (tcc.Need_Charge_Vat__c) {
             vatRate = String.valueOf(Decimal.valueOf(System.Label.Vat) / 100);
             priceToTranzila = ptc.Grand_Total__c;
+          
+        }else{
+            vatRate = '0';
+            priceToTranzila = ptc.Price_Without_VAT__c;
         }
 
         System.debug('priceToTranzila: '+priceToTranzila);
