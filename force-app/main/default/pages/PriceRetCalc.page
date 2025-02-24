@@ -502,7 +502,7 @@ input[type="date"]::-webkit-inner-spin-button { display: none; }
                     </apex:form>
                     <apex:outputpanel id="posting">
                         <form ACTION="https://direct.tranzila.com/magnusinte/" method="POST">
-                            <input type="hidden" name="sum" value="{!ROUND(price,2)}"/>
+                            <input type="hidden" name="sum" value="{!priceToTranzila}"/>
                             <input type="hidden" name="contact" value="{!accadd.Name}"/>
                             <input type="hidden" name="email" value="{!accadd.PersonEmail}"/>
                             <input type="hidden" name="phone" value="{!accadd.PersonMobilePhone}"/>
@@ -510,7 +510,7 @@ input[type="date"]::-webkit-inner-spin-button { display: none; }
                             <input type="hidden" name="tranmode" value="AK"/>
                             <input type="hidden" name="cred_type" value="8"/>
                             <input type="hidden" name="maxpay" value="{!nump}"/>
-                            <input type="hidden" name="IMaam" value="0"/>
+                            <input type="hidden" name="IMaam" value="{!vatRate}"/>
                             <input id="submitzilla" type="submit" value=" Send " style="display: none;"/>
                         </form>
                     </apex:outputpanel>
