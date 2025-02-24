@@ -129,6 +129,9 @@ public without sharing class ChargeOrRefundController {
     {
         err=false;
         System.debug('TokGo: '+TokGo);
+        System.debug('Need_Charge_Vat__c: '+tcc.Need_Charge_Vat__c);
+        System.debug('priceToTranzila: '+priceToTranzila);
+        System.debug('vatRate: '+vatRate);
         if(TokGo == 'True' &&type=='חיוב'&&ptc.Status__c=='פתוח')
         {
             Http http1=new Http();
