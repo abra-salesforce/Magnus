@@ -144,8 +144,8 @@ public without sharing class SuccessController {
             for (ProdLine pl: ptls)
                 if (pl.pt.Quantity__c != null && pl.pt.Quantity__c > 0) {
                     pl.pt.Payment_Transaction__c = pamt.id;
-                    ptlsForInsert.add(pl.pt);
-                }
+                    ptlsForInsert.add(pl.pt);   
+                   }
             insert ptlsForInsert;
             system.debug(str);
             system.debug(pos);
