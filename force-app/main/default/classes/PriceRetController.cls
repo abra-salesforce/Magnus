@@ -655,9 +655,9 @@ public without sharing class PriceRetController {
           
         }else{
             vatRate = '0';
-            priceToTranzila = price / (1 + Decimal.valueOf(System.Label.Vat));
+            priceToTranzila = price / (1 + (Decimal.valueOf(System.Label.Vat)/100));
         }
-
+       
         System.debug('priceToTranzila: '+priceToTranzila);
         System.debug('vatRate: '+vatRate);
             if(totdays>=tcc.Days_Of_Planned_Service__c&&((checkWeekEnd.format('E')!='Fri'&&checkWeekEnd.format('E')!='Sat')||tcc.Return_in_Natbag__c==true))
