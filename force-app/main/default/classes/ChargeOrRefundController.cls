@@ -21,6 +21,7 @@ public without sharing class ChargeOrRefundController {
 
     public ChargeOrRefundController()
     {
+        priceToTranzila=0;
         products='';
         err=false;
         clo=true;
