@@ -88,7 +88,7 @@ public without sharing class ChargeOrRefundController {
             priceToTranzila = ptc != null ? ptc.Grand_Total__c : 0;
         } else {
             vatRate = '0';
-            priceToTranzila = ptc != null ? ptc.Price_Without_VAT__c : 0;
+            priceToTranzila = ptc != null ? ptc.Grand_Total__c : 0;
         }
         
 

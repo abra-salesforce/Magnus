@@ -649,13 +649,11 @@ public without sharing class PriceRetController {
         Datetime checkWeekEnd=uptcc.Return_Date_Updated__c;
 
         System.debug('Need_Charge_Vat__c: '+tcc.Need_Charge_Vat__c);
-        if (!tcc.Need_Charge_Vat__c) {
+        if (tcc.Need_Charge_Vat__c) {
             vatRate = String.valueOf(Decimal.valueOf(System.Label.Vat) / 100);
-            priceToTranzila = price;
           
         }else{
             vatRate = '0';
-            priceToTranzila = price / (1 + (Decimal.valueOf(System.Label.Vat)/100));
         }
        
         System.debug('priceToTranzila: '+priceToTranzila);
