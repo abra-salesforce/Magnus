@@ -83,7 +83,7 @@ public without sharing class ChargeOrRefundController {
         }
 
         System.debug('Need_Charge_Vat__c: '+tcc.Need_Charge_Vat__c);
-        if (tcc != null && !tcc.Need_Charge_Vat__c) {
+        if (tcc != null && tcc.Need_Charge_Vat__c) {
             vatRate = String.valueOf(Decimal.valueOf(System.Label.Vat) / 100);
             priceToTranzila = ptc != null ? ptc.Grand_Total__c : 0;
         } else {
