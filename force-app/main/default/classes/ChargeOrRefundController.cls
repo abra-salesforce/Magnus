@@ -21,7 +21,7 @@ public without sharing class ChargeOrRefundController {
 
     public ChargeOrRefundController()
     {
-        priceToTranzila=0;
+
         products='';
         err=false;
         clo=true;
@@ -83,14 +83,14 @@ public without sharing class ChargeOrRefundController {
         }
 
         System.debug('Need_Charge_Vat__c: '+tcc.Need_Charge_Vat__c);
-        if (tcc.Need_Charge_Vat__c) {
+        if (tcc != null && tcc.Need_Charge_Vat__c != null) {
             vatRate = String.valueOf(Decimal.valueOf(System.Label.Vat) / 100);
-            priceToTranzila = ptc.Grand_Total__c;
-          
-        }else{
+            priceToTranzila = ptc != null ? ptc.Grand_Total__c : 0;
+        } else {
             vatRate = '0';
-            priceToTranzila = ptc.Price_Without_VAT__c;
+            priceToTranzila = ptc != null ? ptc.Price_Without_VAT__c : 0;
         }
+        
 
         System.debug('priceToTranzila: '+priceToTranzila);
         System.debug('vatRate: '+vatRate);
