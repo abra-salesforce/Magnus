@@ -656,7 +656,7 @@ public without sharing class PriceRetController {
             vatRate = '0';
         }
        
-        System.debug('priceToTranzila: '+priceToTranzila);
+        System.debug('price: '+price);
         System.debug('vatRate: '+vatRate);
             if(totdays>=tcc.Days_Of_Planned_Service__c&&((checkWeekEnd.format('E')!='Fri'&&checkWeekEnd.format('E')!='Sat')||tcc.Return_in_Natbag__c==true))
             {
